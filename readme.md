@@ -130,7 +130,7 @@ graph_builder = StateGraph(State)
 graph_builder.add_node("rag_search", rag_search)
 graph_builder.add_node("answer", answer)
 ```
-The graph-based implementation separates operations into distinct nodes for better control flow.
+The graph-based implementation separates the previous chain operations into distinct nodes for better control flow. Possible to add more nodes to the graph and conditionally execute nodes based on the state.
 
 ### ReAct Agent (`react_agent.py`)
 ```python
@@ -140,7 +140,7 @@ agent = create_react_agent(
     prompt=prompt
 )
 ```
-The ReAct implementation combines an LLM with tools for specific actions.
+The ReAct implementation combines an LLM with tools for specific actions. The ReAct agent acts as a standalone agent that can call different tools depending on the user's request and context. 
 
 ## 🔍 Key Concepts
 
@@ -151,11 +151,6 @@ The ReAct implementation combines an LLM with tools for specific actions.
 5. **Tool Use**: Specific functions an agent can perform
 6. **State Management**: Maintaining conversation context
 
-## 🎮 Choosing an Implementation
-
-- Use `main.py` for simple Q&A about the restaurant
-- Use `agent.py` for more structured conversations requiring multiple steps
-- Use `react_agent.py` for interactive sessions requiring specific actions (reservations, trivia, etc.)
 
 ## 🛠️ Customization Options
 
@@ -191,7 +186,6 @@ This project uses LangSmith for monitoring and debugging the LLM application. La
 1. **Trace Visualization**: See how your chains and agents process requests
 2. **Performance Monitoring**: Track latency, token usage, and costs
 3. **Debug Interface**: Inspect intermediate steps and outputs
-4. **Dataset Management**: Create and manage evaluation datasets
 
 To access these features:
 1. Sign up for LangSmith at [smith.langchain.com](https://smith.langchain.com/)
