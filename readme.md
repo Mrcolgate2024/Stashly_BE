@@ -1,14 +1,42 @@
 # Yoda's Galactic Feast Chatbot 🤖🍽️
 
-Welcome, young Padawan! This project demonstrates how to build an interactive chatbot using Python and LangChain. The chatbot serves as a virtual assistant for Yoda's Galactic Feast restaurant, responding in Master Yoda's iconic speaking style.
+Welcome, young Padawan! This project demonstrates three different approaches to building an interactive chatbot using Python and LangChain. Each implementation showcases different architectural patterns and capabilities while maintaining Yoda's iconic speaking style.
+
+## 🤖 Agent Implementations
+
+### 1. Simple RAG Chain (`main.py`)
+A straightforward implementation using Retrieval-Augmented Generation (RAG):
+- Uses vector store for semantic search over restaurant information
+- Maintains conversation history for context
+- Simple linear chain: Query → Retrieve → Generate Response
+- Best for basic Q&A about the restaurant
+
+### 2. Graph-Based Agent (`agent.py`)
+A more sophisticated implementation using LangGraph:
+- Structured as a directed graph of operations
+- Separate nodes for retrieval and response generation
+- Clear separation of concerns between context gathering and response generation
+- Better for complex interactions requiring multiple steps
+
+### 3. ReAct Agent (`react_agent.py`)
+The most advanced implementation using the ReAct (Reasoning and Action) pattern:
+- Tool-using agent that can perform specific actions
+- Supports multiple functions:
+  - Making reservations
+  - Checking daily specials
+  - Star Wars trivia Q&A
+  - Answer verification
+- Maintains conversation state between interactions
+- Best for task-oriented conversations requiring specific actions
 
 ## 🎯 Learning Objectives
 
 Through this project, you'll learn about:
-- Building conversational AI applications
+- Different chatbot architectures (Chain, Graph, ReAct)
 - Working with Large Language Models (LLMs)
 - Using vector stores for semantic search
-- Implementing chat history
+- Implementing conversation state management
+- Tool-based agents and action handling
 - Managing environment variables
 - Creating interactive command-line interfaces
 
@@ -16,16 +44,18 @@ Through this project, you'll learn about:
 
 - **Python**: The primary programming language
 - **LangChain**: Framework for building LLM applications
-- **Groq**: LLM provider for natural language processing
+- **LangGraph**: For building graph-based agents
+- **Anthropic Claude**: Advanced LLM for natural language processing and better at tool calling
 - **HuggingFace**: For text embeddings
 - **python-dotenv**: For environment variable management
-- **LangSmith**: For monitoring and debugging LLM applications
 
 ## 📋 Prerequisites
 
 - Python 3.10 or higher
 - Basic understanding of Python programming
-- A Groq API key (sign up at https://groq.com)
+- API keys for:
+  - Anthropic (for Claude)
+  - Groq (optional, for alternative model)
 
 ## 🚀 Getting Started
 
@@ -36,8 +66,6 @@ cd AIchatbotNBI
 ```
 
 ### 2. Create a Virtual Environment
-Open the terminal in your IDE and run the following commands:
-
 ```bash
 # Create virtual environment
 python -m venv venv
@@ -56,8 +84,6 @@ source venv/bin/activate
 source venv/Scripts/activate
 ```
 
-For VS Code users: Press `Ctrl+Shift+P` -> Select "Python: Select Interpreter" -> Choose the `venv/bin/python` interpreter.
-
 ### 3. Install Dependencies
 ```bash
 pip install -r requirements.txt
@@ -66,51 +92,29 @@ pip install -r requirements.txt
 ### 4. Set Up Environment Variables
 Create a `.env` file in the project root and add your API keys:
 ```
-GROQ_API_KEY="your_groq_api_key_here"
-LANGCHAIN_API_KEY="your_langsmith_api_key_here"
-LANGCHAIN_TRACING_V2=true
-LANGSMITH_ENDPOINT="https://eu.api.smith.langchain.com"
-LANGSMITH_PROJECT="yoda-galactic-feast"
+ANTHROPIC_API_KEY="your_anthropic_api_key_here"
+GROQ_API_KEY="your_groq_api_key_here"  # Optional
 ```
 
 ### 5. Prepare Your Data
-The chatbot uses a text file (`yoda_galactic_feasts.txt`) containing information about the restaurant. You can modify this file to customize the bot's knowledge base.
+The chatbot uses `yoda_galactic_feasts.txt` for restaurant information. You can modify this file to customize the bot's knowledge base.
 
 ### 6. Run the Chatbot
+Choose which implementation to run:
 ```bash
+# For simple RAG implementation
 python main.py
+
+# For graph-based agent
+python agent.py
+
+# For ReAct agent with tools
+python react_agent.py
 ```
 
 ## 🧠 How It Works
 
-### Main Components
-
-1. **Document Loading and Splitting**
-```python
-loader = TextLoader("yoda_galactic_feasts.txt")
-document = loader.load()
-chunks = text_splitter.split_documents(document)
-```
-This code loads the restaurant's information and splits it into manageable chunks.
-
-2. **Vector Store Creation**
-```python
-vector_store = InMemoryVectorStore.from_documents(chunks, embeddings_model)
-retriever = vector_store.as_retriever()
-```
-The text chunks are converted into vectors for semantic search.
-
-3. **Chat History Management**
-```python
-def format_history(message_history):
-    formatted = ""
-    for msg in message_history:
-        formatted += f"Human: {msg['question']}\nAssistant: {msg['answer']}\n\n"
-    return formatted
-```
-This function maintains the conversation context.
-
-4. **Chain Configuration**
+### RAG Chain (`main.py`)
 ```python
 chain = {
     "context": retriever,
@@ -118,33 +122,53 @@ chain = {
     "chat_history": RunnableLambda(lambda x: format_history(message_history))
 } | prompt | llm | StrOutputParser()
 ```
-This sets up the processing pipeline for handling user queries.
+This implementation uses a simple chain that retrieves relevant context and generates responses.
+
+### Graph Agent (`agent.py`)
+```python
+graph_builder = StateGraph(State)
+graph_builder.add_node("rag_search", rag_search)
+graph_builder.add_node("answer", answer)
+```
+The graph-based implementation separates operations into distinct nodes for better control flow.
+
+### ReAct Agent (`react_agent.py`)
+```python
+agent = create_react_agent(
+    model=model,
+    tools=[trivia_question, check_answer, make_reservation, get_todays_special],
+    prompt=prompt
+)
+```
+The ReAct implementation combines an LLM with tools for specific actions.
 
 ## 🔍 Key Concepts
 
-1. **Vector Stores**: Used for semantic search to find relevant information based on user queries.
-2. **Embeddings**: Convert text into numerical vectors that capture semantic meaning.
-3. **Prompt Engineering**: Structuring the input to get desired responses from the LLM.
-4. **Chain**: A sequence of operations that process user input and generate responses.
+1. **RAG (Retrieval-Augmented Generation)**: Enhances responses with relevant context
+2. **Graph-Based Agents**: Structured flow of operations
+3. **ReAct Pattern**: Combines reasoning and action in a single agent
+4. **Vector Stores**: Semantic search for relevant information
+5. **Tool Use**: Specific functions an agent can perform
+6. **State Management**: Maintaining conversation context
 
-## 🎮 Using the Chatbot
+## 🎮 Choosing an Implementation
 
-1. Start the chatbot using `python main.py`
-2. Type your questions about the restaurant
-3. The bot will respond in Yoda's style using information from its knowledge base
-4. Type 'quit', 'exit', or 'q' to end the conversation
+- Use `main.py` for simple Q&A about the restaurant
+- Use `agent.py` for more structured conversations requiring multiple steps
+- Use `react_agent.py` for interactive sessions requiring specific actions (reservations, trivia, etc.)
 
 ## 🛠️ Customization Options
 
-1. Modify the `template` string to change the bot's personality
-2. Adjust the `chunk_size` and `chunk_overlap` in `text_splitter` for different document processing
-3. Change the `temperature` parameter in the LLM configuration to control response creativity
+1. Modify the prompts to change the bot's personality
+2. Add new tools to the ReAct agent
+3. Extend the graph structure with new nodes
+4. Adjust the RAG implementation for different retrieval strategies
 
 ## 📚 Learning Resources
 
 - [LangChain Documentation](https://python.langchain.com/docs/get_started/introduction)
-- [Vector Store Concepts](https://python.langchain.com/docs/how_to/#vector-stores)
-- [Prompt Engineering Guide](https://www.promptingguide.ai/)
+- [LangGraph Documentation](https://python.langchain.com/docs/langgraph)
+- [ReAct Pattern](https://langchain-ai.github.io/langgraph/how-tos/create-react-agent/)
 
 ## 🤝 Contributing
 
