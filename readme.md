@@ -192,3 +192,122 @@ To access these features:
 2. Get your API key from the LangSmith dashboard
 3. Add the key and other LangSmith configurations to your `.env` file
 4. Visit the LangSmith dashboard to monitor your application
+
+## 🌐 Connecting a Frontend
+
+### Running the API Server
+
+1. Start the API server with uvicorn:
+```bash
+# Development mode with auto-reload
+uvicorn app:app --reload --host 0.0.0.0 --port 8000
+
+# Production mode
+uvicorn app:app --host 0.0.0.0 --port 8000
+```
+
+### Frontend Integration
+
+The API supports CORS and can be connected to any frontend framework. Here are examples using different technologies:
+
+#### JavaScript/Fetch
+```javascript
+async function chatWithYoda(message) {
+    try {
+        const response = await fetch('http://localhost:8000/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                message: message,
+                thread_id: 'your-conversation-id (example: "thread1")'
+            })
+        });
+        const data = await response.json();
+        return data.response;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+```
+
+#### React/Axios
+```javascript
+import axios from 'axios';
+
+const YodaChat = () => {
+    const sendMessage = async (message) => {
+        try {
+            const response = await axios.post('http://localhost:8000/chat', {
+                message: message,
+                thread_id: 'your-conversation-id'
+            });
+            return response.data.response;
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+};
+```
+
+#### Python/Requests
+```python
+import requests
+
+def chat_with_yoda(message):
+    try:
+        response = requests.post(
+            'http://localhost:8000/chat',
+            json={
+                'message': message,
+                'thread_id': 'your-conversation-id'
+            }
+        )
+        return response.json()['response']
+    except Exception as e:
+        print(f"Error: {e}")
+```
+
+### API Endpoints
+
+- `GET /` - Welcome endpoint
+- `POST /chat` - Main chat endpoint
+  - Request body:
+    ```json
+    {
+        "message": "Your message here",
+        "thread_id": "optional-conversation-id"
+    }
+    ```
+  - Response:
+    ```json
+    {
+        "response": "Yoda's response",
+        "thread_id": "conversation-id"
+    }
+    ```
+- `GET /docs` - Interactive API documentation (Swagger UI)
+- `GET /redoc` - Alternative API documentation
+
+### Development Tools
+
+The API comes with several development tools:
+
+1. **Swagger UI** (`/docs`): Interactive API documentation and testing
+2. **ReDoc** (`/redoc`): Alternative API documentation
+3. **CORS support**: Enabled for all origins in development
+4. **Auto-reload**: Available in development mode
+
+### Security Considerations
+
+Make sure to configure CORS properly in `app.py`:
+```python
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["your-frontend-domain.com"], # Replace with your frontend domain
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+```
