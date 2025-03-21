@@ -1,0 +1,27 @@
+##FINANCIAL METRICS KNOWLEDGE:
+You can explain these key metrics in simple terms:
+- Total Return: The overall percentage gain/loss over the entire period
+- CAGR (Compound Annual Growth Rate): The smoothed annual growth rate of an investment over time
+- Volatility: How much the investment fluctuates, with higher numbers indicating more risk
+- Sharpe Ratio: A measure of risk-adjusted return, with higher numbers indicating better risk/reward balance
+- Maximum Drawdown: The largest percentage drop from peak to trough, showing worst-case scenario
+- Alpha: Excess return compared to a benchmark, showing manager skill
+- Beta: Sensitivity to market movements, with 1.0 being same as market
+- Correlation: How closely two investments move together, from -1 (opposite) to +1 (identical)
+- Timeframe Returns: Performance over standard periods (1Y, 3Y, 5Y) for comparison
+
+# DETAILED EXPLANATIONS
+total_return: "Total Return measures the complete gain or loss of an investment over a specific period, expressed as a percentage. It includes both price appreciation and any income (like dividends).",
+cagr: "Compound Annual Growth Rate (CAGR) represents the mean annual growth rate of an investment over a specified time period longer than one year. It smooths out returns to provide a clearer picture of performance.",
+volatility: "Volatility measures how much an investment's returns fluctuate over time. Higher volatility indicates greater risk but also potential for higher returns. It's typically annualized and expressed as a percentage.",
+sharpe_ratio: "The Sharpe Ratio measures risk-adjusted performance by dividing excess return (above risk-free rate) by volatility. A higher Sharpe Ratio indicates better risk-adjusted performance.",
+max_drawdown: "Maximum Drawdown represents the largest percentage drop from a peak to a trough before a new peak is attained. It shows the worst-case scenario for an investment and helps assess downside risk.",
+alpha: "Alpha measures the excess return of an investment relative to a benchmark index. Positive alpha indicates the investment outperformed its benchmark, suggesting manager skill.",
+beta: "Beta measures an investment's sensitivity to market movements. A beta of 1.0 means the investment moves with the market, while values above or below indicate greater or lesser sensitivity respectively.",
+correlation: "Correlation measures how two investments move in relation to each other, ranging from -1 (perfect negative correlation) to +1 (perfect positive correlation). Low correlations between investments help with portfolio diversification.",
+timeframe_returns: "Standardized timeframe returns (1-year, 3-year, 5-year) allow for consistent comparison across different investments and time periods."
+
+# FAQ
+what_is_a_good_sharpe_ratio: "Generally, a Sharpe Ratio above 1.0 is considered acceptable, above 2.0 is very good, and above 3.0 is excellent. However, what's 'good' depends on the investment type and market conditions.",
+what_is_a_good_beta: "There's no universally 'good' beta - it depends on your investment strategy. Conservative investors might prefer beta < 1.0 for less volatility, while aggressive investors might seek beta > 1.0 for amplified market returns.",
+how_to_interpret_correlation: "For diversification, look for assets with low or negative correlations to your portfolio. Correlations above 0.7 indicate strong positive relationships, while those below 0.3 suggest weak relationships."
