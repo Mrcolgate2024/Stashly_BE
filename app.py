@@ -59,6 +59,7 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     response: str
     thread_id: str
+    vega_lite_spec: Optional[Dict[str, Any]] = None
 
 # Store conversation history
 conversations: Dict[str, List[Dict[str, Any]]] = {}
@@ -129,14 +130,10 @@ def update_conversation_history(thread_id: str, user_message: str, bot_response:
         {"role": "assistant", "content": bot_response}
     ])
 
-@app.post("/chat/completions", response_model=None)
+@app.post("/chat/completions")
 async def chat_completions(request: Request):
     try:
-        # Parse the request data
         request_data = await request.json()
-        logger.info(f"Raw request to /chat/completions: {request_data}")
-        
-        # Extract messages from the request
         messages = request_data.get("messages", [])
         thread_id = request_data.get("thread_id", "default")
         
@@ -147,96 +144,66 @@ async def chat_completions(request: Request):
                 user_message = msg.get("content", "")
                 break
         
-        logger.info(f"Processed message on /chat/completions: '{user_message}', thread_id: '{thread_id}'")
+        # Process the message
+        response = process_user_input(user_message)
         
-        # Handle initial greeting specially
-        if user_message.lower() == "initial_greeting":
-            logger.info("Handling initial greeting in /chat/completions")
-            response = "Hi, I'm your financial analyst from Stashly. How can I assist you today?"
-        # Handle test messages specially
-        elif user_message.lower() in ["test", "test backend connection", "test connection"]:
-            logger.info("Handling test message in /chat/completions")
-            response = "I'm connected and ready to help with your weekly market report. Which markets would you like information on?"
-        else:
-            # Process the user input using the agent system
-            logger.info("Processing regular message in /chat/completions")
-            try:
-                response = process_user_input(user_message)
-                
-                # Check if the response indicates an iteration limit error
-                if "Agent stopped due to iteration limit or time limit" in response:
-                    logger.warning("Agent hit iteration limit, providing fallback response")
-                    response = "I'm sorry, I'm having trouble processing that request. I'm here to provide weekly market reports. Which markets would you like information on?"
-            except Exception as agent_error:
-                logger.error(f"Error in agent processing: {str(agent_error)}")
-                response = "I apologize for the technical difficulty. I'm here to provide weekly market reports. Which markets would you like information on?"
-            
-        logger.info(f"Generated response: {response}")
+        # Check if the response contains a chart specification
+        vega_spec = None
+        if isinstance(response, dict) and "vega_lite_spec" in response:
+            vega_spec = response["vega_lite_spec"]
+            response = response["description"]
         
         # Update conversation history
         update_conversation_history(thread_id, user_message, response)
         
-        # Return streaming response
-        return StreamingResponse(
-            stream_response(response),
-            media_type="text/event-stream"
-        )
+        # Return streaming response with chart spec if available
+        if vega_spec:
+            # Send the chart spec first
+            chart_data = {
+                "id": "chart_spec",
+                "object": "chat.completion.chunk",
+                "created": int(time.time()),
+                "model": "gpt-4",
+                "choices": [{"delta": {"vega_lite_spec": vega_spec}, "index": 0}]
+            }
+            yield f"data: {json.dumps(chart_data)}\n\n"
+        
+        # Then stream the text response
+        async for chunk in stream_response(response):
+            yield chunk
+            
     except Exception as e:
-        error_detail = f"Error processing request: {str(e)}\n{traceback.format_exc()}"
-        logger.error(error_detail)
+        logger.error(f"Error in chat completions: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/chat")
 async def chat_endpoint(request: Request):
     try:
         body = await request.json()
-        # Log the entire request body for debugging
-        logger.info(f"Raw request body to /chat: {body}")
-        
         user_message = body.get("message", "")
         thread_id = body.get("thread_id", "default")
-        user_name = body.get("user_name")
         
-        logger.info(f"Parsed request - message: '{user_message}', thread_id: '{thread_id}', user_name: '{user_name}'")
+        # Process the message
+        response = process_user_input(user_message)
         
-        # Handle initial greeting specially
-        if user_message.lower().strip() == "initial_greeting":
-            response = "Hi, I'm your financial analyst from Stashly. How can I assist you today?"
-            update_conversation_history(thread_id, user_message, response)
-            return {"response": response, "thread_id": thread_id}
-        
-        # Handle test messages specially
-        if user_message.lower().strip() in ["test", "test backend connection", "test connection"]:
-            response = "I'm connected and ready to help with your weekly market report. Which markets would you like information on?"
-            update_conversation_history(thread_id, user_message, response)
-            return {"response": response, "thread_id": thread_id}
-            
-        # Process regular messages
-        logger.info(f"Processing message: '{user_message}'")
-        try:
-            response = process_user_input(user_message)
-            
-            # Check if the response indicates an iteration limit error
-            if "Agent stopped due to iteration limit or time limit" in response:
-                logger.warning("Agent hit iteration limit, providing fallback response")
-                response = "I'm sorry, I'm having trouble processing that request. I'm here to provide weekly market reports. Which markets would you like information on?"
-        except Exception as agent_error:
-            logger.error(f"Error in agent processing: {str(agent_error)}")
-            response = "I apologize for the technical difficulty. I'm here to provide weekly market reports. Which markets would you like information on?"
-            
-        logger.info(f"Final response: '{response}'")
+        # Check if the response contains a chart specification
+        vega_spec = None
+        if isinstance(response, dict) and "vega_lite_spec" in response:
+            vega_spec = response["vega_lite_spec"]
+            response = response["description"]
         
         # Update conversation history
         update_conversation_history(thread_id, user_message, response)
         
-        result = {"response": response, "thread_id": thread_id}
-        logger.info(f"Sending response: {result}")
-        return result
+        return {
+            "response": response,
+            "thread_id": thread_id,
+            "vega_lite_spec": vega_spec
+        }
         
     except Exception as e:
-        error_detail = f"Error processing request: {str(e)}\n{traceback.format_exc()}"
-        logger.error(error_detail)
-        return {"response": f"I apologize for the technical difficulty. I'm here to provide weekly market reports. Which markets would you like information on?"}
+        logger.error(f"Error processing request: {str(e)}")
+        return {"response": "I apologize for the technical difficulty.", "thread_id": thread_id}
 
 @app.get("/conversations/{thread_id}")
 async def get_conversation_history(thread_id: str):

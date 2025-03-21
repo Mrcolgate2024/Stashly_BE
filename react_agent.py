@@ -15,6 +15,7 @@ import requests
 import getpass
 from dotenv import load_dotenv
 import time
+import altair as alt
 
 # Before loading any environment variables, print current state
 print("\nBefore load_dotenv:")
@@ -861,6 +862,39 @@ def calculate_annual_returns(params: str) -> str:
     except Exception as e:
         return f"Error calculating annual returns: {str(e)}"
 
+@tool
+def create_market_chart(market_data: pd.DataFrame = None) -> Dict[str, Any]:
+    """Create a Vega-Lite chart specification for market data visualization.
+    Returns a dictionary containing both the chart specification and a description."""
+    try:
+        if market_data is None:
+            market_data = pd.read_excel("market_data.xlsx")
+        
+        # Create the chart specification
+        chart = alt.Chart(market_data).mark_line().encode(
+            x=alt.X('Date:T', title='Date'),
+            y=alt.Y('Value:Q', title='Value'),
+            color='Market:N',
+            tooltip=['Date:T', 'Value:Q', 'Market:N']
+        ).properties(
+            width='container',
+            height=400,
+            title='Market Performance'
+        )
+        
+        # Convert to Vega-Lite spec
+        vega_spec = chart.to_dict()
+        
+        return {
+            "description": "Here's a visualization of the market performance.",
+            "vega_lite_spec": vega_spec
+        }
+    except Exception as e:
+        return {
+            "description": f"Sorry, I couldn't create the chart due to: {str(e)}",
+            "vega_lite_spec": None
+        }
+
 # ============================================================================
 # AGENT SETUP
 # ============================================================================
@@ -943,6 +977,7 @@ tools = [
     get_available_columns,
     generate_data_table,
     calculate_annual_returns,
+    create_market_chart,
 ]
 
 # Create the agent
