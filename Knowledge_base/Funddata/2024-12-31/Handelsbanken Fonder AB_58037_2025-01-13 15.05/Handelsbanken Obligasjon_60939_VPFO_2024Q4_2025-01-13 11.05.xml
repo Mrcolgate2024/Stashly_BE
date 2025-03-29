@@ -1,0 +1,762 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VärdepappersfondInnehav xmlns="http://schemas.fi.se/publika/vardepappersfonder/20200331">
+  <Rapportinformation>
+    <Kvartalsslut>2024-12-31</Kvartalsslut>
+  </Rapportinformation>
+  <Bolagsinformation>
+    <Fondbolag_namn>Handelsbanken Fonder AB</Fondbolag_namn>
+    <Fondbolag_institutnummer>58037</Fondbolag_institutnummer>
+    <Fondbolag_LEI-kod>549300RJTULO02U5ZG71</Fondbolag_LEI-kod>
+  </Bolagsinformation>
+  <Fondinformation>
+    <Fond_institutnummer>60939</Fond_institutnummer>
+    <Fond_ISIN-kod>SE0009696875</Fond_ISIN-kod>
+    <Fond_namn>Handelsbanken Obligasjon</Fond_namn>
+    <Förvaltningsavgift>
+      <MedAndelsklasser>
+        <Förvaltningsavgift>
+          <Andelsklass_namn>Handelsbanken Obligasjon A1 NOK</Andelsklass_namn>
+          <Förvaltningsavgift_Typ>
+            <Förvaltningsavgift_fast>0.45</Förvaltningsavgift_fast>
+          </Förvaltningsavgift_Typ>
+        </Förvaltningsavgift>
+        <Förvaltningsavgift>
+          <Andelsklass_namn>Handelsbanken Obligasjon A1 SEK</Andelsklass_namn>
+          <Förvaltningsavgift_Typ>
+            <Förvaltningsavgift_fast>0.45</Förvaltningsavgift_fast>
+          </Förvaltningsavgift_Typ>
+        </Förvaltningsavgift>
+        <Förvaltningsavgift>
+          <Andelsklass_namn>Handelsbanken Obligasjon A10 NOK</Andelsklass_namn>
+          <Förvaltningsavgift_Typ>
+            <Förvaltningsavgift_fast>0.20</Förvaltningsavgift_fast>
+          </Förvaltningsavgift_Typ>
+        </Förvaltningsavgift>
+      </MedAndelsklasser>
+    </Förvaltningsavgift>
+    <Fondförmögenhet>3263410585</Fondförmögenhet>
+    <Likvida_medel>185183920</Likvida_medel>
+    <Övriga_tillgångar_och_skulder>15885888</Övriga_tillgångar_och_skulder>
+    <Aktiv_risk>0.87</Aktiv_risk>
+    <Standardavvikelse_24_månader>4.96</Standardavvikelse_24_månader>
+    <Jämförelseindex>
+      <Jämförelseindex>Solactive NOK Fixed Duration 5 Government Bonds &amp; Bills Index</Jämförelseindex>
+    </Jämförelseindex>
+    <FinansiellaInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Kingdom of Norway 1,25% 2031-09-17</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010930522</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>325000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>85.1895890400</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>269355392.51</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>8.25</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Kingdom of Norway 1,375% 2030-08-19</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010875230</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>365000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>88.1696945210</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>313089130.83</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>9.59</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Kingdom of Norway 1,75% 2029-09-06</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010844079</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>100000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>91.7001643800</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>89212540.02</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.73</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Kingdom of Norway 2,125% 2032-05-18</Instrumentnamn>
+        <ISIN-kod_instrument>NO0012440397</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>170000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>90.2235753410</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>149219212.92</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>4.57</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Kingdom of Norway 3% 2033-08-15</Instrumentnamn>
+        <ISIN-kod_instrument>NO0012837642</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>295000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>94.7109465760</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>271817856.58</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>8.33</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Oslo Kommune 2,25% 2027-06-07</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010811235</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>60000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>96.1740874000</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>56139057.19</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.72</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Oslo kommune 2,4% 2034-11-21</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010869225</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>20000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>83.6665037000</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>16279362.99</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>0.50</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>STAVANGER KOMMUNE 2,67% 2027-03-23</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010789803</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>20000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>98.2005544000</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>19107317.74</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>0.59</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Viken Fylkeskommune 2,45% 2027-06-23</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010798408</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>40000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>96.4558448000</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>37535683.70</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.15</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Bustadkreditt Sogn og Fjordane AS 2,3% 2030-06-19</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010871643</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>90000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>90.6819071220</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>79399715.26</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.43</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument>Övrigt</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>DNB Boligkreditt AS 2,05% 2033-03-09</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010947344</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>50000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>85.8283222000</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>41749994.02</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.28</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument>Övrigt</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>DNB Boligkreditt AS 2.125% 2026-05-28</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010853229</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>55000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>98.0175161640</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>52447183.75</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.61</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument>Övrigt</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Nordea Eiendomskreditt AS 4% 2029-10-12</Instrumentnamn>
+        <ISIN-kod_instrument>NO0012720988</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>164000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>98.8730623290</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>157752998.88</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>4.83</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument>Övrigt</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Sparebank 1 Boligkreditt AS 2,1%  2026-11-25</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010778764</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>100000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>95.9404832900</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>93337828.38</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.86</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument>Övrigt</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Swedbank AB 4,73% 2028-12-05</Instrumentnamn>
+        <ISIN-kod_instrument>XS2729757018</ISIN-kod_instrument>
+        <Landkod_Emittent>SE</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>50000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>100.1391322200</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>48711288.58</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.49</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Den Danske Bank A/S 1,955% 2027-09-07</Instrumentnamn>
+        <ISIN-kod_instrument>NO0011088619</ISIN-kod_instrument>
+        <Landkod_Emittent>DK</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>50000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>93.3560589000</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>45411756.88</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.39</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Nordea Bank Abp 4,04% 2030-03-25</Instrumentnamn>
+        <ISIN-kod_instrument>NO0013339093</ISIN-kod_instrument>
+        <Landkod_Emittent>FI</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>120000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>97.7910838330</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>114165871.42</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>3.50</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>BN Bank ASA 1,6% 2027-03-22</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010920671</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>50000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>94.8328215000</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>46130107.51</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.41</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument>Övrigt</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>BN Bank ASA 2,3% 2028-10-11</Instrumentnamn>
+        <ISIN-kod_instrument>NO0011121808</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>76000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>92.1452109610</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>68130590.23</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.09</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument>Övrigt</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>BN Bank ASA 4,07% 2027-11-18</Instrumentnamn>
+        <ISIN-kod_instrument>NO0012626060</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>50000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>98.7000294600</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>48011257.05</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.47</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument>Övrigt</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Fana Sparebank 4,584% 2029-11-06</Instrumentnamn>
+        <ISIN-kod_instrument>NO0013388488</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>21000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>99.7008697140</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>20369202.79</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>0.62</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument>Övrigt</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Kommunalbanken 2% 2027-11-29</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010811276</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>100000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>93.6764924700</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>91135254.66</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.79</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument>Övrigt</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Landkreditt Bank 4,08% 2029-10-01</Instrumentnamn>
+        <ISIN-kod_instrument>NO0013326066</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>50000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>97.8975454800</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>47620899.88</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.46</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument>Övrigt</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Rogaland Sparebank 4,36% 2029-10-01</Instrumentnamn>
+        <ISIN-kod_instrument>NO0013354704</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>50000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>99.2029837000</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>48255912.15</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.48</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>SpareBank 1 Nord-Norge 3,695% 2027-05-27</Instrumentnamn>
+        <ISIN-kod_instrument>NO0012534025</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>36000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>99.9945567220</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>35021492.53</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.07</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Sparebank 1 Ostlandet 2,665% 2027-05-18</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010793268</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>29000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>97.1936109660</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>27421518.82</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>0.84</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>SpareBank 1 Ringerike Hadeland 4,6% 2029-09-26</Instrumentnamn>
+        <ISIN-kod_instrument>NO0012707472</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>30000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>100.2465530000</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>29258125.16</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>0.90</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>SpareBank 1 SMN 1,4% 2026-11-17</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010905490</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>50000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>94.4271971200</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>45932797.17</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.41</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>SpareBank 1 Sorost-Norge 4,65% 2029-09-26</Instrumentnamn>
+        <ISIN-kod_instrument>NO0012704164</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>100000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>100.6813837000</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>97950118.55</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>3.00</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>SpareBank 1 Sorost-Norge 4,83% 2028-11-15</Instrumentnamn>
+        <ISIN-kod_instrument>NO0012753633</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>75000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>100.8695623330</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>73599894.24</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.26</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>SpareBank 1 SR-Bank ASA 4,81% 2029-02-22</Instrumentnamn>
+        <ISIN-kod_instrument>NO0013163485</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>50000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>104.2587899400</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>50715238.80</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.55</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>SpareBank 1 Østfold Akershus 4,85% 2029-10-22</Instrumentnamn>
+        <ISIN-kod_instrument>NO0013215491</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>120000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>100.9867969830</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>117896695.97</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>3.61</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Sparebank 1 Östlandet 2% 2026-06-09</Instrumentnamn>
+        <ISIN-kod_instrument>NO0011167801</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>10000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>97.4604077000</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>9481652.06</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>0.29</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Sparebank 1 Östlandet 2,33% 2026-11-17</Instrumentnamn>
+        <ISIN-kod_instrument>NO0011202822</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>50000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>96.1505067200</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>46771077.17</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.43</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Sparebanken OST 2,15% 2026-08-14</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010860513</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>16000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>96.9572971250</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>15092329.33</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>0.46</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Sparebanken Sør 4,54% 2026-12-21</Instrumentnamn>
+        <ISIN-kod_instrument>NO0012703455</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>25000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>99.8548035600</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>24286490.43</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>0.74</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Sparebanken Vest 4,14% 2029-04-30</Instrumentnamn>
+        <ISIN-kod_instrument>NO0013115790</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>150000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>100.3427741070</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>146431042.05</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>4.49</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Sparebanken Vest 4,65% 2030-05-08</Instrumentnamn>
+        <ISIN-kod_instrument>NO0013391631</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>50000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>99.9880754800</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>48637809.13</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.49</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Sparebanken Øst 5,15% 2029-10-26</Instrumentnamn>
+        <ISIN-kod_instrument>NO0013054122</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>40000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>102.3861728750</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>39843464.22</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.22</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Spb 1Hallingdal 4,75% 2027-09-27</Instrumentnamn>
+        <ISIN-kod_instrument>NO0012708900</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>15000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>101.1810314000</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>14765431.79</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>0.45</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument>Övrigt</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Totens Sparebank 1,97% 2027-04-27</Instrumentnamn>
+        <ISIN-kod_instrument>NO0010996481</ISIN-kod_instrument>
+        <Landkod_Emittent>NO</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal />
+        <Nominellt_belopp>23000000.00</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>95.4955705650</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>21368146.59</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>0.65</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Financials</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>DerivatinstrumentSamtTeknikerOchInstrument</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Interest Rate Swap-NOK-20280319</Instrumentnamn>
+        <ISIN-kod_instrument />
+        <Landkod_Emittent>GB</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal>350000000.0000000000</Antal>
+        <Nominellt_belopp />
+        <Kurs_som_använts_vid_värdering_av_instrumentet>98.6533894030</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>335919987.53</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>10.29</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>DerivatinstrumentSamtTeknikerOchInstrument</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Interest Rate Swap-NOK-20280319</Instrumentnamn>
+        <ISIN-kod_instrument />
+        <Landkod_Emittent>GB</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal>-350000000.0000000000</Antal>
+        <Nominellt_belopp />
+        <Kurs_som_använts_vid_värdering_av_instrumentet>99.9503022160</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>-340336043.98</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>-10.43</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>DerivatinstrumentSamtTeknikerOchInstrument</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Interest Rate Swap-NOK-20300319</Instrumentnamn>
+        <ISIN-kod_instrument />
+        <Landkod_Emittent>GB</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal>195000000.0000000000</Antal>
+        <Nominellt_belopp />
+        <Kurs_som_använts_vid_värdering_av_instrumentet>99.5396258530</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>188836701.48</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>5.79</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>DerivatinstrumentSamtTeknikerOchInstrument</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Interest Rate Swap-NOK-20300319</Instrumentnamn>
+        <ISIN-kod_instrument />
+        <Landkod_Emittent>GB</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal>-195000000.0000000000</Antal>
+        <Nominellt_belopp />
+        <Kurs_som_använts_vid_värdering_av_instrumentet>100.6475827920</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9728721930</Valutakurs_instrument>
+        <Marknadsvärde_instrument>-190938607.46</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>-5.85</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+    </FinansiellaInstrument>
+  </Fondinformation>
+  <Fondinformation />
+</VärdepappersfondInnehav>

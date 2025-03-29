@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VärdepappersfondInnehav xmlns="http://schemas.fi.se/publika/vardepappersfonder/20200331">
+  <Rapportinformation>
+    <Kvartalsslut>2024-12-31</Kvartalsslut>
+  </Rapportinformation>
+  <Bolagsinformation>
+    <Fondbolag_namn>ISEC Services AB</Fondbolag_namn>
+    <Fondbolag_institutnummer>59003</Fondbolag_institutnummer>
+    <Fondbolag_LEI-kod>549300G2P8MX7J4PPT95</Fondbolag_LEI-kod>
+  </Bolagsinformation>
+  <Fondinformation>
+    <Fond_institutnummer>61028</Fond_institutnummer>
+    <Fond_ISIN-kod>SE0011311190</Fond_ISIN-kod>
+    <Fond_namn>Finansco Dynamisk Allokering A</Fond_namn>
+    <Förvaltningsavgift>
+      <UtanAndelsklasser>
+        <Förvaltningsavgift_fast>0.65</Förvaltningsavgift_fast>
+        <Prestationsbaserad>
+          <Avkastningströskel>Solactive NOK Fixed Duration 0.25 yrs GVRNM Bonds and Bills Index (SOL1X) + 3%</Avkastningströskel>
+          <ProcentuelltUttag>15</ProcentuelltUttag>
+        </Prestationsbaserad>
+      </UtanAndelsklasser>
+    </Förvaltningsavgift>
+    <Fondförmögenhet>730300214</Fondförmögenhet>
+    <Likvida_medel>11593146</Likvida_medel>
+    <Övriga_tillgångar_och_skulder>2549828</Övriga_tillgångar_och_skulder>
+    <Aktiv_risk>4.7</Aktiv_risk>
+    <Standardavvikelse_24_månader>4.67</Standardavvikelse_24_månader>
+    <Jämförelseindex>
+      <Jämförelseindex>FINANSCO INDEX</Jämförelseindex>
+    </Jämförelseindex>
+    <FinansiellaInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>Fondandel</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>FINANSCO DYN ALL</Instrumentnamn>
+        <ISIN-kod_instrument>SE0011310309</ISIN-kod_instrument>
+        <Landkod_Emittent>SE</Landkod_Emittent>
+        <Valuta>NOK</Valuta>
+        <Antal>3923790.2733</Antal>
+        <Nominellt_belopp />
+        <Kurs_som_använts_vid_värdering_av_instrumentet>187.7937</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>0.9719</Valutakurs_instrument>
+        <Marknadsvärde_instrument>716157240.52</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>98.06</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument>Övrigt</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+    </FinansiellaInstrument>
+  </Fondinformation>
+  <Fondinformation />
+</VärdepappersfondInnehav>

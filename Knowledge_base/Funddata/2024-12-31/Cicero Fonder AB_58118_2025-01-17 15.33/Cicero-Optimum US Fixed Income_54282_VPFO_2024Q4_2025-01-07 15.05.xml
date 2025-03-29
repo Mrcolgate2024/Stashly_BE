@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VärdepappersfondInnehav xmlns="http://schemas.fi.se/publika/vardepappersfonder/20200331">
+  <Rapportinformation>
+    <Kvartalsslut>2024-12-31</Kvartalsslut>
+  </Rapportinformation>
+  <Bolagsinformation>
+    <Fondbolag_namn>Cicero Fonder AB</Fondbolag_namn>
+    <Fondbolag_institutnummer>58118</Fondbolag_institutnummer>
+    <Fondbolag_LEI-kod>549300LI31BD4ZQFYN40</Fondbolag_LEI-kod>
+  </Bolagsinformation>
+  <Fondinformation>
+    <Fond_institutnummer>54282</Fond_institutnummer>
+    <Fond_ISIN-kod>SE0014452884</Fond_ISIN-kod>
+    <Fond_namn>Cicero-Optimum US Fixed Income</Fond_namn>
+    <Förvaltningsavgift>
+      <MedAndelsklasser>
+        <Förvaltningsavgift>
+          <Andelsklass_namn>OPTIMUM FIXED INC C</Andelsklass_namn>
+          <Förvaltningsavgift_Typ>
+            <Förvaltningsavgift_fast>0.4</Förvaltningsavgift_fast>
+          </Förvaltningsavgift_Typ>
+        </Förvaltningsavgift>
+        <Förvaltningsavgift>
+          <Andelsklass_namn>OPTIMUM FIXED INC A</Andelsklass_namn>
+          <Förvaltningsavgift_Typ>
+            <Förvaltningsavgift_fast>0.7</Förvaltningsavgift_fast>
+          </Förvaltningsavgift_Typ>
+        </Förvaltningsavgift>
+      </MedAndelsklasser>
+    </Förvaltningsavgift>
+    <Fondförmögenhet>188268735</Fondförmögenhet>
+    <Likvida_medel>4410106</Likvida_medel>
+    <Övriga_tillgångar_och_skulder>-66928</Övriga_tillgångar_och_skulder>
+    <Aktiv_risk>1.2</Aktiv_risk>
+    <Standardavvikelse_24_månader>11.3</Standardavvikelse_24_månader>
+    <Jämförelseindex>
+      <Jämförelseindex>BARCL.LONG GOV/CREDI</Jämförelseindex>
+    </Jämförelseindex>
+    <FinansiellaInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>US TREAS 2,25 270215</Instrumentnamn>
+        <ISIN-kod_instrument>US912828V988</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>42000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>96.8467849315069</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>450015.05</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>0.24</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>US TREAS 3,75 431115</Instrumentnamn>
+        <ISIN-kod_instrument>US912810RD28</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>247000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>86.667902739726</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>2368360.34</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.26</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>US TREAS 1,25 500515</Instrumentnamn>
+        <ISIN-kod_instrument>US912810SN90</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>8658000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>47.6809342465753</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>45672509.83</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>24.26</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>US TREAS 2,0 500215</Instrumentnamn>
+        <ISIN-kod_instrument>US912810SL35</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>2610000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>58.9279643835616</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>17015882.84</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>9.04</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>US TREAS1,625 260215</Instrumentnamn>
+        <ISIN-kod_instrument>US912828P469</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>44000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>97.7842835616438</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>476008.03</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>0.25</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>US TREAS0,625 300815</Instrumentnamn>
+        <ISIN-kod_instrument>US91282CAE12</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>202000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>81.517501369863</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>1821775.13</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>0.97</Andel_av_fondförmögenhet_instrument>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>MS 4,375 470122</Instrumentnamn>
+        <ISIN-kod_instrument>US61746BEG77</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>750000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>85.4951388888889</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>7094066.02</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>3.77</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Finans</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>UNION 4,30% 490301</Instrumentnamn>
+        <ISIN-kod_instrument>US907818FC74</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>721000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>84.0398888888889</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>6703679.99</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>3.56</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>20</Branschkod_instrument>
+          <Bransch_namn_instrument>Industrivaror och tjänster</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>JP MORGAN 6,4 380515</Instrumentnamn>
+        <ISIN-kod_instrument>US46625HHF01</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>334000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>110.048</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>4066503.6</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.16</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Finans</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>KIMBERLY6,625 370801</Instrumentnamn>
+        <ISIN-kod_instrument>US494368BC63</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>318000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>115.769013888889</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>4072977.34</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.16</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>30</Branschkod_instrument>
+          <Bransch_namn_instrument>Dagligvaror</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>WYETH 5,95% 370401</Instrumentnamn>
+        <ISIN-kod_instrument>US983024AN02</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>644000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>106.069972222222</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>7557373.09</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>4.01</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>35</Branschkod_instrument>
+          <Bransch_namn_instrument>Hälsovård</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>VERIZON 5,25 370316</Instrumentnamn>
+        <ISIN-kod_instrument>US92343VDU52</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>769000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>99.3316666666667</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>8450970.83</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>4.49</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>50</Branschkod_instrument>
+          <Bransch_namn_instrument>Telekomoperatörer</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>UNITHEAL 6,5 370615</Instrumentnamn>
+        <ISIN-kod_instrument>US91324PAX06</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>511000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>108.900833333333</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>6156652.53</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>3.27</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>35</Branschkod_instrument>
+          <Bransch_namn_instrument>Hälsovård</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>UNITHEAL4,625 411115</Instrumentnamn>
+        <ISIN-kod_instrument>US91324PBU57</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>357000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>88.777625</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>3506422.78</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.86</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>35</Branschkod_instrument>
+          <Bransch_namn_instrument>Hälsovård</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>BNSF 5,4 410601</Instrumentnamn>
+        <ISIN-kod_instrument>US12189LAE11</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>421000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>98.8925</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>4606149.1</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.45</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>20</Branschkod_instrument>
+          <Bransch_namn_instrument>Industrivaror och tjänster</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>C EDISON 3,95 500401</Instrumentnamn>
+        <ISIN-kod_instrument>US209111FY40</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>430000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>79.1490277777778</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>3765360.66</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>55</Branschkod_instrument>
+          <Bransch_namn_instrument>Kraftförsörjning</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>CITIGROUP3,52 281027</Instrumentnamn>
+        <ISIN-kod_instrument>US172967LS86</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>440000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>96.8795</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>4716035.93</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.5</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Finans</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>BANKOFAMERI 5 440121</Instrumentnamn>
+        <ISIN-kod_instrument>US06051GFC87</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>676000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>95.8138333333334</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>7165845.69</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>3.81</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Finans</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>AMAZON 4,8 341205</Instrumentnamn>
+        <ISIN-kod_instrument>US023135AP19</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>350000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>99.9963333333333</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>3872083.02</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.06</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>25</Branschkod_instrument>
+          <Bransch_namn_instrument>Sällanköpvaror och tjänster</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>AT &amp; T 4,3 300215</Instrumentnamn>
+        <ISIN-kod_instrument>US00206RGQ92</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>436000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>98.469</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>4749835.37</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.52</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>50</Branschkod_instrument>
+          <Bransch_namn_instrument>Telekomoperatörer</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>AT &amp; T 4,55 490309</Instrumentnamn>
+        <ISIN-kod_instrument>US00206RDK59</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>442000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>84.5714166666666</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>4135598.94</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.2</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>50</Branschkod_instrument>
+          <Bransch_namn_instrument>Telekomoperatörer</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>GOLDMAN 4,411 390423</Instrumentnamn>
+        <ISIN-kod_instrument>US38141GXA74</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>836000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>88.9429361111111</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>8226408.65</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>4.37</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>40</Branschkod_instrument>
+          <Bransch_namn_instrument>Finans</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>HOMEDEP 5,875 361216</Instrumentnamn>
+        <ISIN-kod_instrument>US437076AS19</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>405000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>105.684472222222</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>4735422.64</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.52</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>25</Branschkod_instrument>
+          <Bransch_namn_instrument>Sällanköpvaror och tjänster</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>ILLINOIS4,875 410915</Instrumentnamn>
+        <ISIN-kod_instrument>US452308AQ28</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>393000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>95.109875</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>4135335.04</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.2</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>30</Branschkod_instrument>
+          <Bransch_namn_instrument>Dagligvaror</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>DEERE 5,375 291016</Instrumentnamn>
+        <ISIN-kod_instrument>US244199BD66</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>384000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>104.384361111111</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>4434648.5</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.36</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>20</Branschkod_instrument>
+          <Bransch_namn_instrument>Industrivaror och tjänster</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>CSX 3,35 490915</Instrumentnamn>
+        <ISIN-kod_instrument>US126408HR78</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>494000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>70.5945833333334</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>3858254.47</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>2.05</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>20</Branschkod_instrument>
+          <Bransch_namn_instrument>Industrivaror och tjänster</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>CSX 4,75 420530</Instrumentnamn>
+        <ISIN-kod_instrument>US126408GW72</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>306000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>90.9043333333333</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>3077503.48</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>1.63</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>20</Branschkod_instrument>
+          <Bransch_namn_instrument>Industrivaror och tjänster</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>ÖverlåtbartVärdepapper</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>CVS 5,125 450720</Instrumentnamn>
+        <ISIN-kod_instrument>US126650CN80</ISIN-kod_instrument>
+        <Landkod_Emittent>US</Landkod_Emittent>
+        <Valuta>USD</Valuta>
+        <Antal />
+        <Nominellt_belopp>735000</Nominellt_belopp>
+        <Kurs_som_använts_vid_värdering_av_instrumentet>86.4997777777778</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.0635</Valutakurs_instrument>
+        <Marknadsvärde_instrument>7033878.64</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>3.74</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>35</Branschkod_instrument>
+          <Bransch_namn_instrument>Hälsovård</Bransch_namn_instrument>
+        </Bransch>
+      </FinansielltInstrument>
+    </FinansiellaInstrument>
+  </Fondinformation>
+  <Fondinformation />
+</VärdepappersfondInnehav>

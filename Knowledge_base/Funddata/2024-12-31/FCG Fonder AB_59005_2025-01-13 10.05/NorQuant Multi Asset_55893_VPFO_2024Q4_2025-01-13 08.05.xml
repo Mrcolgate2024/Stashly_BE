@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VärdepappersfondInnehav xmlns="http://schemas.fi.se/publika/vardepappersfonder/20200331">
+  <Rapportinformation>
+    <Kvartalsslut>2024-12-31</Kvartalsslut>
+  </Rapportinformation>
+  <Bolagsinformation>
+    <Fondbolag_namn>FCG Fonder AB</Fondbolag_namn>
+    <Fondbolag_institutnummer>59005</Fondbolag_institutnummer>
+    <Fondbolag_LEI-kod>254900CCW358UPZNRP67</Fondbolag_LEI-kod>
+  </Bolagsinformation>
+  <Fondinformation>
+    <Fond_institutnummer>55893</Fond_institutnummer>
+    <Fond_ISIN-kod>SE0014957916</Fond_ISIN-kod>
+    <Fond_namn>NorQuant Multi Asset</Fond_namn>
+    <Förvaltningsavgift>
+      <MedAndelsklasser>
+        <Förvaltningsavgift>
+          <Andelsklass_namn>Norquant Multi Asset A</Andelsklass_namn>
+          <Förvaltningsavgift_Typ>
+            <Förvaltningsavgift_fast>0.99</Förvaltningsavgift_fast>
+          </Förvaltningsavgift_Typ>
+        </Förvaltningsavgift>
+        <Förvaltningsavgift>
+          <Andelsklass_namn>Norquant Multi Asset B</Andelsklass_namn>
+          <Förvaltningsavgift_Typ>
+            <Förvaltningsavgift_fast>0.89</Förvaltningsavgift_fast>
+          </Förvaltningsavgift_Typ>
+        </Förvaltningsavgift>
+        <Förvaltningsavgift>
+          <Andelsklass_namn>Norquant Multi Asset C</Andelsklass_namn>
+          <Förvaltningsavgift_Typ>
+            <Förvaltningsavgift_fast>0.69</Förvaltningsavgift_fast>
+          </Förvaltningsavgift_Typ>
+        </Förvaltningsavgift>
+        <Förvaltningsavgift>
+          <Andelsklass_namn>Norquant Multi Asset D</Andelsklass_namn>
+          <Förvaltningsavgift_Typ>
+            <Förvaltningsavgift_fast>0.99</Förvaltningsavgift_fast>
+          </Förvaltningsavgift_Typ>
+        </Förvaltningsavgift>
+        <Förvaltningsavgift>
+          <Andelsklass_namn>Norquant Multi Asset E</Andelsklass_namn>
+          <Förvaltningsavgift_Typ>
+            <Förvaltningsavgift_fast>0.99</Förvaltningsavgift_fast>
+          </Förvaltningsavgift_Typ>
+        </Förvaltningsavgift>
+      </MedAndelsklasser>
+    </Förvaltningsavgift>
+    <Fondförmögenhet>214744243</Fondförmögenhet>
+    <Likvida_medel>1937963</Likvida_medel>
+    <Övriga_tillgångar_och_skulder>-185541</Övriga_tillgångar_och_skulder>
+    <Aktiv_risk>3.42</Aktiv_risk>
+    <Standardavvikelse_24_månader>8.67</Standardavvikelse_24_månader>
+    <Jämförelseindex>Solactive Broad Global Developed Government Bond 50.0; MSCI ACWI 50.0; </Jämförelseindex>
+    <FinansiellaInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>Fondandel</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>AMUNDI INDEX FTSE EPRA NAREIT</Instrumentnamn>
+        <ISIN-kod_instrument>LU1437018838</ISIN-kod_instrument>
+        <Landkod_Emittent>LU</Landkod_Emittent>
+        <Valuta>EUR</Valuta>
+        <Antal>42420.0</Antal>
+        <Nominellt_belopp />
+        <Kurs_som_använts_vid_värdering_av_instrumentet>65.23</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.789</Valutakurs_instrument>
+        <Marknadsvärde_instrument>32620830.26</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>15.19</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument />
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>Fondandel</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Amundi Bloomberg Equal-weight Commodity ex-Agriculture UCITS ETF</Instrumentnamn>
+        <ISIN-kod_instrument>LU1829218749</ISIN-kod_instrument>
+        <Landkod_Emittent>LU</Landkod_Emittent>
+        <Valuta>EUR</Valuta>
+        <Antal>101028.0</Antal>
+        <Nominellt_belopp />
+        <Kurs_som_använts_vid_värdering_av_instrumentet>23.875</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.789</Valutakurs_instrument>
+        <Marknadsvärde_instrument>28435580.82</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>13.24</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument />
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>Fondandel</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Amundi Index MSCI Emerging Markets Ucits ETF</Instrumentnamn>
+        <ISIN-kod_instrument>LU1437017350</ISIN-kod_instrument>
+        <Landkod_Emittent>LU</Landkod_Emittent>
+        <Valuta>EUR</Valuta>
+        <Antal>22103.0</Antal>
+        <Nominellt_belopp />
+        <Kurs_som_använts_vid_värdering_av_instrumentet>67.478</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.789</Valutakurs_instrument>
+        <Marknadsvärde_instrument>17582895.43</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>8.19</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument />
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>Fondandel</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Invesco Nasdaq-100 ESG UCITS E EUR</Instrumentnamn>
+        <ISIN-kod_instrument>IE000COQKPO9</ISIN-kod_instrument>
+        <Landkod_Emittent>IE</Landkod_Emittent>
+        <Valuta>EUR</Valuta>
+        <Antal>17300.0</Antal>
+        <Nominellt_belopp />
+        <Kurs_som_använts_vid_värdering_av_instrumentet>58.33</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.789</Valutakurs_instrument>
+        <Marknadsvärde_instrument>11896386.0</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>5.54</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument />
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>Fondandel</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>LG Longer Dated All Commodities UCITS ETF</Instrumentnamn>
+        <ISIN-kod_instrument>IE00B4WPHX27</ISIN-kod_instrument>
+        <Landkod_Emittent>IE</Landkod_Emittent>
+        <Valuta>EUR</Valuta>
+        <Antal>98542.0</Antal>
+        <Nominellt_belopp />
+        <Kurs_som_använts_vid_värdering_av_instrumentet>21.865</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.789</Valutakurs_instrument>
+        <Marknadsvärde_instrument>25400824.96</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>11.83</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument />
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>Fondandel</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Xtrackers MSCI US ESG UCITS ETF (DE)</Instrumentnamn>
+        <ISIN-kod_instrument>IE00BFMNPS42</ISIN-kod_instrument>
+        <Landkod_Emittent>IE</Landkod_Emittent>
+        <Valuta>EUR</Valuta>
+        <Antal>39468.0</Antal>
+        <Nominellt_belopp />
+        <Kurs_som_använts_vid_värdering_av_instrumentet>61.66</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.789</Valutakurs_instrument>
+        <Marknadsvärde_instrument>28689673.62</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>13.36</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument />
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>Fondandel</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>Xtrackers Russell 2000 UCITS ETF</Instrumentnamn>
+        <ISIN-kod_instrument>IE00BJZ2DD79</ISIN-kod_instrument>
+        <Landkod_Emittent>IE</Landkod_Emittent>
+        <Valuta>EUR</Valuta>
+        <Antal>3038.0</Antal>
+        <Nominellt_belopp />
+        <Kurs_som_använts_vid_värdering_av_instrumentet>312.8</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.789</Valutakurs_instrument>
+        <Marknadsvärde_instrument>11202926.37</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>5.22</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument />
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>Fondandel</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>iShares European Property Yiel</Instrumentnamn>
+        <ISIN-kod_instrument>IE00B0M63284</ISIN-kod_instrument>
+        <Landkod_Emittent>IE</Landkod_Emittent>
+        <Valuta>EUR</Valuta>
+        <Antal>73296.0</Antal>
+        <Nominellt_belopp />
+        <Kurs_som_använts_vid_värdering_av_instrumentet>28.82</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.789</Valutakurs_instrument>
+        <Marknadsvärde_instrument>24902974.2</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>11.6</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument />
+        </Bransch>
+      </FinansielltInstrument>
+      <FinansielltInstrument>
+        <Tillgångsslag_enligt_LVF_5_kap>Fondandel</Tillgångsslag_enligt_LVF_5_kap>
+        <Instrumentnamn>iShares US Property Yield UCIT</Instrumentnamn>
+        <ISIN-kod_instrument>IE00B1FZSF77</ISIN-kod_instrument>
+        <Landkod_Emittent>IE</Landkod_Emittent>
+        <Valuta>EUR</Valuta>
+        <Antal>96779.0</Antal>
+        <Nominellt_belopp />
+        <Kurs_som_använts_vid_värdering_av_instrumentet>28.275</Kurs_som_använts_vid_värdering_av_instrumentet>
+        <Valutakurs_instrument>11.789</Valutakurs_instrument>
+        <Marknadsvärde_instrument>32259728.77</Marknadsvärde_instrument>
+        <Andel_av_fondförmögenhet_instrument>15.02</Andel_av_fondförmögenhet_instrument>
+        <Bransch>
+          <Branschkod_instrument>0</Branschkod_instrument>
+          <Bransch_namn_instrument />
+        </Bransch>
+      </FinansielltInstrument>
+    </FinansiellaInstrument>
+  </Fondinformation>
+  <Fondinformation />
+</VärdepappersfondInnehav>

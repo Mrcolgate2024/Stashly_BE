@@ -1,9 +1,9 @@
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import StreamingResponse, JSONResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List, Optional, Dict, Any, Union
 import uvicorn
-from react_agent import agent_executor, process_user_input
+from Agents.portfolio_agent import agent_executor, process_user_input, filter_messages
 from fastapi.middleware.cors import CORSMiddleware
 import traceback
 import logging
@@ -12,6 +12,11 @@ import time
 import asyncio
 import httpx
 from langchain.agents import AgentExecutor, create_react_agent
+from supervisor_agent import process_user_input
+# Update imports to use new file names
+# from supervisor_agent import agent_supervisor, process_user_input
+# from portfolio_agent import PortfolioAgent, memory  # was ReactAgent
+# from market_report_agent import MarketReportAgent  # was MarketSummary
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -34,6 +39,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Add this constant at the top with other imports
+MAX_CONVERSATION_TURNS = 5  # Adjust this number based on your needs
+
 class ChatMessage(BaseModel):
     role: str
     content: str
@@ -55,14 +63,12 @@ class ChatRequest(BaseModel):
     message: str
     thread_id: Optional[str] = "default"
     user_name: Optional[str] = None
+    message_history: Optional[List[Dict[str, str]]] = None
 
 class ChatResponse(BaseModel):
     response: str
     thread_id: str
     vega_lite_spec: Optional[Dict[str, Any]] = None
-
-# Store conversation history
-conversations: Dict[str, List[Dict[str, Any]]] = {}
 
 async def stream_response(response_text: str):
     """
@@ -118,18 +124,6 @@ async def stream_response(response_text: str):
     # Send the DONE marker
     yield "data: [DONE]\n\n"
 
-def update_conversation_history(thread_id: str, user_message: str, bot_response: str):
-    """
-    Update the conversation history for a given thread.
-    """
-    if thread_id not in conversations:
-        conversations[thread_id] = []
-    
-    conversations[thread_id].extend([
-        {"role": "user", "content": user_message},
-        {"role": "assistant", "content": bot_response}
-    ])
-
 @app.post("/chat/completions")
 async def chat_completions(request: Request):
     try:
@@ -144,81 +138,53 @@ async def chat_completions(request: Request):
                 user_message = msg.get("content", "")
                 break
         
-        # Process the message
-        response = process_user_input(user_message)
+        # Process the message (memory is handled in react_agent.py)
+        response = await process_user_input(user_message)
         
-        # Check if the response contains a chart specification
-        vega_spec = None
-        if isinstance(response, dict) and "vega_lite_spec" in response:
-            vega_spec = response["vega_lite_spec"]
-            response = response["description"]
-        
-        # Update conversation history
-        update_conversation_history(thread_id, user_message, response)
-        
-        # Return streaming response with chart spec if available
-        if vega_spec:
-            # Send the chart spec first
-            chart_data = {
-                "id": "chart_spec",
-                "object": "chat.completion.chunk",
-                "created": int(time.time()),
-                "model": "gpt-4",
-                "choices": [{"delta": {"vega_lite_spec": vega_spec}, "index": 0}]
-            }
-            yield f"data: {json.dumps(chart_data)}\n\n"
-        
-        # Then stream the text response
+        # Stream the response
         async for chunk in stream_response(response):
             yield chunk
-            
+        
     except Exception as e:
         logger.error(f"Error in chat completions: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/chat")
-async def chat_endpoint(request: Request):
+async def chat_endpoint(request: ChatRequest) -> ChatResponse:
     try:
-        body = await request.json()
-        user_message = body.get("message", "")
-        thread_id = body.get("thread_id", "default")
+        # Process the message through the supervisor agent
+        result = await process_user_input(
+            message=request.message,
+            thread_id=request.thread_id
+        )
         
-        # Process the message
-        response = process_user_input(user_message)
+        # Debug the result
+        print(f"API response: {json.dumps({k: v is not None for k, v in result.items()}, indent=2)}")
         
-        # Check if the response contains a chart specification
-        vega_spec = None
-        if isinstance(response, dict) and "vega_lite_spec" in response:
-            vega_spec = response["vega_lite_spec"]
-            response = response["description"]
-        
-        # Update conversation history
-        update_conversation_history(thread_id, user_message, response)
-        
-        return {
-            "response": response,
-            "thread_id": thread_id,
-            "vega_lite_spec": vega_spec
-        }
+        # Ensure vega_lite_spec is included in the response
+        if 'vega_lite_spec' not in result:
+            result['vega_lite_spec'] = None
+            
+        return ChatResponse(
+            response=result["response"],
+            thread_id=result["thread_id"],
+            vega_lite_spec=result.get("vega_lite_spec")
+        )
         
     except Exception as e:
-        logger.error(f"Error processing request: {str(e)}")
-        return {"response": "I apologize for the technical difficulty.", "thread_id": thread_id}
+        print(f"Error in chat endpoint: {str(e)}\n{traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/conversations/{thread_id}")
 async def get_conversation_history(thread_id: str):
-    """
-    Get the conversation history for a specific thread.
-    """
-    return {"history": conversations.get(thread_id, [])}
+    """Get the conversation history for a specific thread."""
+    messages = memory.load_memory_variables({}).get("history", [])
+    return {"history": messages}
 
 @app.delete("/conversations/{thread_id}")
 async def clear_conversation_history(thread_id: str):
-    """
-    Clear the conversation history for a specific thread.
-    """
-    if thread_id in conversations:
-        del conversations[thread_id]
+    """Clear the conversation history for a specific thread."""
+    memory.clear()
     return {"message": f"Conversation history cleared for thread {thread_id}"}
 
 @app.post("/proxy/simli/startE2ESession")
@@ -542,6 +508,15 @@ async def test_simli_api():
             "traceback": traceback.format_exc()
         }
 
+@app.get("/test-architecture")
+def test_architecture():
+    import platform
+    return {
+        "architecture": platform.architecture(),
+        "machine": platform.machine(),
+        "system": platform.system()
+    }
+
 @app.get("/")
 async def root():
     return {
@@ -550,13 +525,19 @@ async def root():
         "version": "1.0.0",
         "endpoints": {
             "/chat/completions": "Streaming chat interface (OpenAI compatible)",
-            "/chat": "Regular chat interface",
+            "/chat": "Main chat interface",
             "/conversations/{thread_id}": "Get conversation history",
             "/conversations/{thread_id} (DELETE)": "Clear conversation history",
             "/test": "Simple test endpoint to check if the API is running",
             "/simli/connect": "Connect to Simli avatar",
             "/proxy/simli/startE2ESession": "Proxy endpoint for Simli API",
-            "/test/simli-api": "Test Simli API connection with sample data"
+            "/test/simli-api": "Test Simli API connection with sample data",
+            "/test-architecture": "Test architecture information"
+        },
+        "agents": {
+            "market_report_agent": "Generates comprehensive weekly market reports",
+            "portfolio_agent": "Analyzes portfolio data and performance",
+            "supervisor_agent": "Routes queries to appropriate specialized agents"
         }
     }
 
