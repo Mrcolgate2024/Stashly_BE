@@ -20,6 +20,7 @@ import logging
 from typing import TypedDict, Optional, List
 from pathlib import Path
 import traceback
+from pydantic import BaseModel, Field
 
 class GraphState(TypedDict):
     input: str
@@ -28,8 +29,13 @@ class GraphState(TypedDict):
     portfolio_output: Optional[str]
     market_report_output: Optional[str]
     conversational_output: Optional[str]
-    user_name: Optional[str]
+    websearch_output: Optional[str]
+    stock_output: Optional[str]
+    chat_output: Optional[str]
+    fund_output: Optional[str]
     market_charts: Optional[List[dict]]
+    user_name: Optional[str]
+    last_ran_agent: Optional[str]
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -950,14 +956,16 @@ def get_market_data_for_chart(params: str) -> str:
     except Exception as e:
         return json.dumps({"error": f"Error getting market data: {str(e)}"})
 
+class ChartInput(BaseModel):
+    data_str: str = Field(..., description="JSON time series like: {'OMX30': {'2022-01-31': 2134.07, ...}}")
 
-@tool
+@tool(args_schema=ChartInput)
 def create_market_chart(data_str: str) -> Dict[str, Any]:
-    """Create a Vega-Lite chart from a JSON/dict time series: {\"OMX30\": {\"2022-01-31\": 2134.07, ...}}"""
+    """Create a Vega-Lite chart from a JSON/dict time series"""
     try:
         import json
         
-        # Parse the input, which might be JSON
+        # Parse the input
         if isinstance(data_str, str):
             try:
                 data = json.loads(data_str)
@@ -966,78 +974,57 @@ def create_market_chart(data_str: str) -> Dict[str, Any]:
                 return None
         else:
             data = data_str
-            
+        
         print(f"Data type: {type(data)}, Data: {str(data)[:100]}...")
         
-        # Extract the index name (first key in data)
         index_name = list(data.keys())[0] if data and isinstance(data, dict) else "Market Index"
+        values = [
+            {"date": date_str, "value": float(value)}
+            for idx_name, timeseries in data.items()
+            if isinstance(timeseries, dict)
+            for date_str, value in timeseries.items()
+            if not pd.isna(value)
+        ]
         
-        # Create values array in the format expected by Vega-Lite
-        values = []
-        for idx_name, timeseries in data.items():
-            if isinstance(timeseries, dict):
-                for date_str, value in timeseries.items():
-                    if not pd.isna(value):
-                        values.append({
-                            "date": date_str,
-                            "value": float(value)
-                        })
-        
-        # Sort values by date
         values.sort(key=lambda x: x["date"])
+        min_value = min(item["value"] for item in values) * 0.9 if values else 0
         
-        # Calculate min value for y-axis scaling (90% of minimum)
-        if values:
-            min_value = min(item["value"] for item in values) * 0.9
-        else:
-            min_value = 0
-            
-        # Check if we have values to plot
         if not values:
             print("No valid data points found for chart")
             return None
-        
-        # Create the Vega-Lite spec directly
-        start_date = values[0]["date"] if values else "N/A"
-        end_date = values[-1]["date"] if values else "N/A"
-        
+
+        start_date = values[0]["date"]
+        end_date = values[-1]["date"]
+
         vega_spec = {
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
             "description": f"{index_name} ({start_date} to {end_date})",
             "mark": "line",
             "width": 600,
             "height": 400,
-            "data": {
-                "values": values
-            },
+            "data": {"values": values},
             "encoding": {
                 "x": {
                     "field": "date",
                     "type": "temporal",
                     "title": "Date",
-                    "axis": {
-                        "format": "%Y-%m"
-                    }
+                    "axis": {"format": "%Y-%m"}
                 },
                 "y": {
                     "field": "value",
                     "type": "quantitative",
                     "title": "Price",
-                    "scale": {
-                        "domainMin": min_value
-                    }
+                    "scale": {"domainMin": min_value}
                 }
             }
         }
-        
-        # Print the Vega-Lite spec for debugging
+
         print(f"Generated Vega-Lite spec with {len(values)} data points")
-        
         return {
             "vega_lite_spec": vega_spec,
             "description": "Here's your requested chart!"
         }
-        
+
     except Exception as e:
         print(f"Error creating chart: {str(e)}\n{traceback.format_exc()}")
         return None
@@ -1081,7 +1068,7 @@ IMPORTANT FORMATTING INSTRUCTIONS:
 - When using calculate_performance, format the input as a proper JSON string, e.g., "start_date": "2020-12-31", "end_date": "2021-12-31", "column_name": "Equity Sweden"
 - When using generate_data_table, format the input as a proper JSON string, e.g., "columns": ["Equity Sweden"], "start_date": "2020-12-31", "end_date": "2021-12-31", "frequency": "monthly"
 - When using calculate_annual_returns, format the input as a proper JSON string, e.g., "start_year": 2020, "end_year": 2024, "column_name": "Equity Sweden"
-- When creating charts, first use get_market_data_for_chart to get real market data, then pass the result to create_market_chart
+- When creating charts, first use get_market_data_for_chart to get real market data, then pass the result to create_market_chart for the vega-lite JSON dict output
 - ALWAYS follow the exact format below, including the "Thought:", "Action:", "Action Input:", "Observation:", and "Final Answer:" prefixes
 - After each "Thought:", you MUST include either an "Action:" or "Final Answer:" - never end with just a "Thought:"
 - When providing your final answer, ALWAYS use this exact format:
@@ -1152,8 +1139,13 @@ agent_executor = AgentExecutor.from_agent_and_tools(
     handle_parsing_errors=True,
     max_iterations=15,
     return_intermediate_steps=True,
+    structured=True,
     early_stopping_method="force", # force generate if stuck
     timeout=120
+    # **{
+    # "structured_output": True,  # 👈 Important!
+    # "input_type": "json",     # Optional, but helpful for consistency
+    # }
 )
 
 # ============================================================================

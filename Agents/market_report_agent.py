@@ -23,8 +23,13 @@ class GraphState(TypedDict):
     portfolio_output: Optional[str]
     market_report_output: Optional[str]
     conversational_output: Optional[str]
-    user_name: Optional[str]
+    websearch_output: Optional[str]
+    stock_output: Optional[str]
+    chat_output: Optional[str]
+    fund_output: Optional[str]
     market_charts: Optional[List[dict]]
+    user_name: Optional[str]
+    last_ran_agent: Optional[str]
 
 DOTENV_PATH = Path(__file__).resolve().parents[1] / ".env"
 load_dotenv(dotenv_path=DOTENV_PATH)
@@ -127,8 +132,14 @@ Tool names: {tool_names}
 Today's date is {current_date}. All reports cover the past week ({date_range}).
 
 ##INSTRUCTIONS (IMPORTANT):
-You must follow this exact reasoning format using **ReAct** steps. Do NOT skip steps or go directly to the Final Answer.
-You MUST use at least one tool before concluding. Never jump directly to the Final Answer.
+You must follow this exact reasoning format using **ReAct** steps. Do NOT skip steps or go directly to the Final Answer without using a tool.
+
+You must use at least one tool before concluding. After that, if you have gathered enough data to write the report, stop the chain with:
+
+Thought: I now know the final answer  
+Final Answer: [write full market report with the structure below]
+
+⚠️ Do NOT loop endlessly. Perform at most 2-3 searches before concluding.
 
 ### REQUIRED FORMAT:
 Question: {input}
@@ -137,8 +148,11 @@ Action: [tool name, exactly as listed above]
 Action Input: [specific search query]
 Observation: [summarize result from tool call]
 ... (repeat Thought / Action / Observation if needed)
-Thought: I now know the final answer
-Final Answer: [write full market report with sections below]
+Thought: I now know the final answer.  
+Final Answer: Let's compile the full report below.
+
+At the end of the report, include this line exactly:
+[END OF REPORT]
 
 ##REPORT STRUCTURE:
 **MARKET SUMMARY ({date_range})**
@@ -166,9 +180,12 @@ agent_executor = AgentExecutor.from_agent_and_tools(
     handle_parsing_errors=True,
     max_iterations=12,
     max_execution_time=180,
-    output_parser="structured",
+    # output_parser="structured",
+    stop=["[END OF REPORT]"],  # <- stop signal for LangChain to stop parsing
     agent_kwargs={
-        "input_variables": ["input", "chat_history", "agent_scratchpad", "current_date", "date_range"]
+        "input_variables": [
+            "input", "chat_history", "agent_scratchpad", "current_date", "date_range"
+        ]
     }
 )
 

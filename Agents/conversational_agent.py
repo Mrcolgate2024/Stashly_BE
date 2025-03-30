@@ -11,11 +11,15 @@ from typing import TypedDict, Optional, List, Dict
 class GraphState(TypedDict):
     input: str
     thread_id: str
-    messages: List[Dict[str, str]]
+    messages: List[dict]
     portfolio_output: Optional[str]
     market_report_output: Optional[str]
     conversational_output: Optional[str]
+    websearch_output: Optional[str]
+    chat_output: Optional[str]
+    market_charts: Optional[List[dict]]
     user_name: Optional[str]
+    last_ran_agent: Optional[str]
 
 # --------------------
 # Greeting Tool
@@ -32,13 +36,13 @@ def respond_direct(message: str, state: dict = None) -> str:
 
     greeting_keywords = ["hi", "hello", "hey", "initial_greeting"]
     new_user_greeting = (
-        "Hello, I’m Ashley from Stashly — your financial assistant.  \n\n"
-        "I can assist you with:\n"
-        "• Weekly market reports for specific regions and topics\n"
-        "• Performance and risk analysis for portfolios and macro data\n"
-        "• Macroeconomic analytics and trend insights\n"
+        "Hello, I'm Ashley from Stashly — your financial assistant.\n\n"
+        "I can assist you with:\n\n"
+        "• Weekly market reports for specific regions and topics\n\n"
+        "• Performance and risk analysis for portfolios and macro data\n\n"
+        "• Macroeconomic analytics and trend insights\n\n"
         "• Visual charts for market and macro data\n\n"
-        "Let me know what you’d like help with today."
+        "Let me know what you'd like help with today."
     )
 
     # If user greets or triggers initial greeting
