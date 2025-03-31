@@ -1098,17 +1098,17 @@ Question: {input}
 # Initialize the LLM
 llm = ChatOpenAI(
     openai_api_key=openai_key,
-    model="gpt-4o-mini", #not working for gpt-4o-mini for some reason, cant figure out thought action
-    temperature=0.6,
+    model="gpt-4o-mini",  # Use mini for cost efficiency
+    temperature=0.6,  # Lower temperature for more focused responses
     request_timeout=120,
-    max_retries=5
+    max_retries=5,
 )
 
 # Initialize memory for conversation history
 memory = ConversationBufferWindowMemory(
     return_messages=True,
-    max_token_limit=10000,  # Trim to last ~1000 tokens
-    k=10  # Keep last 10 messages
+    max_token_limit=4000,  # Reduce token limit for mini model
+    k=5  # Keep last 5 messages to stay within context limits
 )
 
 # Define the tools
@@ -1137,7 +1137,7 @@ agent_executor = AgentExecutor.from_agent_and_tools(
     tools=tools,
     verbose=True,
     handle_parsing_errors=True,
-    max_iterations=15,
+    max_iterations=3,  # Reduce max iterations for faster responses
     return_intermediate_steps=True,
     structured=True,
     early_stopping_method="force", # force generate if stuck

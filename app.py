@@ -33,7 +33,7 @@ app = FastAPI(
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://stashly.lovable.app"],  # frontend URL
+    allow_origins=["https://stashly.lovable.app", "http://localhost:3000", "http://localhost:5173",  "http://localhost:8080", "http://localhost:8081"],  # frontend URLs
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

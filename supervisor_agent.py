@@ -40,12 +40,23 @@ def route_decision(state: GraphState) -> str:
 
     # Keyword categories
     market_keywords = ["market", "report", "weekly", "analysis", "economy", "trends", "economic"]
-    portfolio_keywords = ["portfolio", "return", "allocation", "holdings", "fund", "ppm", "chart", "visualize", "graph"]
-    fund_keywords = ["exposure", "owns", "holding", "fund owns", "who holds", "do i have exposure", "fund position"]
+    portfolio_keywords = ["portfolio", "70/30", "60/40", "50/50", "return", "performance", "time series", "index", "ppm", "chart", "visualize", "graph"]
+    fund_keywords = ["exposure", "owns", "holding", "fund owns", "who holds", "do i have exposure", "fund position", "fund", "allocation", "holdings", "funds"]
     stock_keywords = ["stock", "price", "fundamentals", "ticker", "dividend", "pe ratio", "eps", "valuation", "quote", "history"]
-    websearch_keywords = ["search", "look up", "find", "web", "online", "google"]
-    greeting_keywords = ["hello", "hi", "hey", "bjorn", "name is", "greetings"]
+    websearch_keywords = ["search", "look up", "find", "web", "online", "google", "weather", "news"]
+    greeting_keywords = ["hello", "hi", "hey", "bjorn", "name is", "greetings", "initial_greeting"]
     portfolio_names = ["70/30", "60/40", "50/50"]
+    ashley_keywords = ["who are you", "tell me about yourself", "what's your background", "where are you from", "how old are you", "what do you do", "what's your story", "ashley", "your background", "your education", "your family", "how are you", "how do you feel", "are you ok", "are you well", "what are you wearing", "your clothes", "your outfit", "your appearance"]
+
+    # Personal questions about Ashley (highest priority) 
+    if any(keyword in message for keyword in greeting_keywords):
+        print("Routing to conversational agent (greeting)")
+        return "chat"
+
+    # Greetings (moved to second priority)
+    if any(keyword in message for keyword in ashley_keywords):
+        print("Routing to conversational agent (personal questions)")
+        return "chat"
 
     # Stock agent routing
     if any(keyword in message for keyword in stock_keywords):
@@ -67,11 +78,6 @@ def route_decision(state: GraphState) -> str:
         print("Routing to portfolio agent (keyword or name match)")
         return "portfolio"
 
-    # Greetings
-    if any(keyword in message for keyword in greeting_keywords):
-        print("Routing to conversational agent (greeting)")
-        return "chat"
-
     # Previous context fallback
     if state.get("stock_output"):
         return "stock"
@@ -92,8 +98,8 @@ def route_decision(state: GraphState) -> str:
         return "websearch"
 
     # Default fallback
-    print("Default routing to websearch agent")
-    return "websearch"
+    print("Default routing to conversational agent")
+    return "chat"
 
 # ---- Create LangGraph ----
 

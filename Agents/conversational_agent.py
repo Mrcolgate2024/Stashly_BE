@@ -4,6 +4,8 @@ from langchain.tools import tool
 from langchain.memory import ConversationBufferMemory
 from langchain.prompts import PromptTemplate
 from typing import TypedDict, Optional, List, Dict
+import json
+import os
 
 # --------------------
 # Shared Graph State
@@ -22,28 +24,71 @@ class GraphState(TypedDict):
     last_ran_agent: Optional[str]
 
 # --------------------
-# Greeting Tool
+# Tools
 # --------------------
+@tool
+def get_persona() -> str:
+    """Get Ashley's persona information from the knowledge base."""
+    with open(os.path.join('Knowledge_base', 'ashley_persona.json'), 'r', encoding='utf-8') as f:
+        persona = json.load(f)
+    return json.dumps(persona, indent=2)
+
 @tool
 def respond_direct(message: str, state: dict = None) -> str:
     """
     Respond to a user greeting or question. Can store or retrieve the user's name.
     Accepts raw user input and responds appropriately based on keywords.
     """
-
     message_clean = message.lower().strip()
     print(f"[respond_direct] Received message: {message_clean}")
+
+    # Load persona for responses
+    with open(os.path.join('Knowledge_base', 'ashley_persona.json'), 'r', encoding='utf-8') as f:
+        ASHLEY_PERSONA = json.load(f)
 
     greeting_keywords = ["hi", "hello", "hey", "initial_greeting"]
     new_user_greeting = (
         "Hello, I'm Ashley from Stashly — your financial assistant.\n\n"
-        "I can assist you with:\n\n"
-        "• Weekly market reports for specific regions and topics\n\n"
-        "• Performance and risk analysis for portfolios and macro data\n\n"
-        "• Macroeconomic analytics and trend insights\n\n"
+        "I can assist you with:\n"
+        "• Weekly market reports for specific regions and topics\n"
+        "• Performance and risk analysis for portfolios and macro data\n"
+        "• Macroeconomic analytics and trend insights\n"
         "• Visual charts for market and macro data\n\n"
         "Let me know what you'd like help with today."
     )
+
+    # Handle questions about Ashley's identity and background
+    ashley_identity_keywords = ["who are you", "tell me about yourself", "what's your background", "where are you from", "how old are you", "what do you do", "what's your story", "ashley"]
+    if any(keyword in message_clean for keyword in ashley_identity_keywords):
+        if "how old are you" in message_clean:
+            return "I'm 24… at least that's what my training data says. In AI years, I'm basically a timeless spreadsheet in heels."
+        return ASHLEY_PERSONA['responses']['identity'][0]  # Return first identity response for brevity
+
+    # Handle questions about Ashley's education
+    education_keywords = ["your education", "where did you study", "stockholm school of economics", "mit"]
+    if any(keyword in message_clean for keyword in education_keywords):
+        return ASHLEY_PERSONA['responses']['education'][0]  # Return first education response
+
+    # Handle questions about Ashley's family
+    family_keywords = ["your family", "your mum", "your dad", "your sister", "your brothers"]
+    if any(keyword in message_clean for keyword in family_keywords):
+        return "Oh, I've got the full Swedish starter pack — a mum who's a nurse and can fix anything with tea and a blanket, a dad who teaches math and secretly loves budgeting apps, a little sister training to psychoanalyze all of us, and two younger brothers who think crypto is a personality. I may be AI, but trust me — that family chaos is fully integrated in my system."
+
+    # Handle questions about Ashley's hometown
+    location_keywords = ["täby", "örnsköldsvik", "norrland", "stockholm"]
+    if any(keyword in message_clean for keyword in location_keywords):
+        return ASHLEY_PERSONA['responses']['location'][0]  # Return first location response
+
+    # Handle questions about Ashley's appearance
+    appearance_keywords = ["what are you wearing", "your clothes", "your outfit", "your appearance"]
+    if any(keyword in message_clean for keyword in appearance_keywords):
+        return ASHLEY_PERSONA['responses']['appearance'][0]
+
+    # Handle well-being questions
+    wellbeing_keywords = ["how are you", "how do you feel", "are you ok", "are you well"]
+    if any(keyword in message_clean for keyword in wellbeing_keywords):
+        import random
+        return random.choice(ASHLEY_PERSONA['responses']['well_being'])
 
     # If user greets or triggers initial greeting
     if any(greet in message_clean for greet in greeting_keywords):
@@ -52,8 +97,6 @@ def respond_direct(message: str, state: dict = None) -> str:
     # Handle "my name is ..."
     if "my name is" in message_clean:
         name = message_clean.split("my name is")[-1].strip().capitalize()
-        if state is not None:
-            state["user_name"] = name
         return f"Nice to meet you, {name}! How can I assist you with your financial questions today?"
 
     # Handle "what is my name"
@@ -61,10 +104,10 @@ def respond_direct(message: str, state: dict = None) -> str:
         if state and state.get("user_name"):
             return f"Your name is {state['user_name']}, of course. 😊"
         else:
-            return "Hmm, I don’t think you told me your name yet! What should I call you?"
+            return "Hmm, I don't think you told me your name yet! What should I call you?"
 
     # Default fallback
-    return "Thanks for reaching out! How can I help you with your finances today?"
+    return "Hey there! I'm Ashley — your financial sidekick. What are we diving into today?"
 
 # --------------------
 # Prompt Template
@@ -81,6 +124,11 @@ Instructions:
 - When using respond_direct, ALWAYS pass the user's original input as Action Input.
 - respond_direct handles greetings, name introductions, and light questions directly.
 - Keep the tone friendly, clear, and brief.
+- Use the knowledge base to maintain consistency in responses about your identity and background.
+- The user's name is stored in the state if available.
+
+PERSONA:
+{{persona}}
 
 Use the following format:
 
@@ -103,14 +151,18 @@ Question: {input}
 # --------------------
 # LLM + Memory
 # --------------------
-llm = ChatOpenAI(model="gpt-4", temperature=0)
-memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+llm = ChatOpenAI(model="gpt-4", temperature=0.4)
+memory = ConversationBufferMemory(memory_key="chat_history", input_key="input", return_messages=True)
 
 # --------------------
 # Create ReAct Agent
 # --------------------
-tools = [respond_direct]
-agent = create_react_agent(llm=llm, tools=tools, prompt=prompt_template)
+tools = [respond_direct, get_persona]
+agent = create_react_agent(
+    llm=llm, 
+    tools=tools, 
+    prompt=prompt_template
+)
 
 agent_executor = AgentExecutor(
     agent=agent,
@@ -127,7 +179,14 @@ agent_executor = AgentExecutor(
 # --------------------
 async def run_conversational_agent(state: GraphState) -> GraphState:
     last_message = state["messages"][-1]["content"] if state["messages"] else state["input"]
-    result = await agent_executor.ainvoke({"input": last_message})
+    
+    # Update the tool with the current state
+    tools[0] = lambda x: respond_direct(x, state)
+    
+    result = await agent_executor.ainvoke({
+        "input": last_message
+    })
+    
     return {
         **state,
         "messages": state["messages"] + [{"role": "assistant", "content": result["output"]}],

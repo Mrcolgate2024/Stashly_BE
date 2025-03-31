@@ -20,18 +20,14 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-testgraph.py
-test_graph.py
-test*.py
-
 
 # Virtual Environment
 venv/
 ENV/
-.env
 
 # IDE
 .idea/
@@ -40,16 +36,31 @@ ENV/
 *.swo
 
 # Logs
-logs/
 *.log
 
 # Local development
 .DS_Store
-Thumbs.db
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Test files
+*.test.js
+*.spec.js
+coverage/
+.coverage
+htmlcov/
+
+# Documentation
+docs/
+*.md
+!README.md
 
 # Docker
-.dockerignore
 Dockerfile
+.dockerignore
+docker-compose*
 
 # Large files and data
 *.csv
@@ -64,3 +75,11 @@ Dockerfile
 test_*
 tests/ 
 supervisor_backup.py
+
+# Explicitly include knowledge base
+!Knowledge_base/
+!Knowledge_base/**/*
+!Knowledge_base/Funddata/**/*.xml
+!knowledge_base/
+!knowledge_base/**/*
+!knowledge_base/Funddata/**/*.xml

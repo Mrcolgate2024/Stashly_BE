@@ -22,7 +22,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire project, including .env and market_data.xlsx
+# Copy the entire project, including .env and market_data.xlsx and .xml files
 COPY . .
 
 # Expose port

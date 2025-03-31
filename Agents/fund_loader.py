@@ -5,9 +5,10 @@ import xml.etree.ElementTree as ET
 from typing import List, Dict
 from pathlib import Path
 from datetime import datetime
+import traceback
 
 # Path where FI XML files are stored
-DATA_ROOT = Path("knowledge_base/Funddata")
+DATA_ROOT = Path("Knowledge_base/Funddata")
 
 # Optional: industry code mapping (can be extended)
 SECTOR_CODES = {

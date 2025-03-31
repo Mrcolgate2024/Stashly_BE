@@ -45,10 +45,14 @@ for col in FUND_DF.select_dtypes(include="object").columns:
 
 FUND_ALIASES = {
     "lf": "länsförsäkringar",
-    "lf usa": "Länsförsäkringar USA Index",  # ← or whatever the exact name is in your dataset
+    "lf usa": "Länsförsäkringar USA Index",
     "lf europe": "Länsförsäkringar Europa Index",
     "lf sweden": "Länsförsäkringar Sverige Index",
     "lf global": "Länsförsäkringar Global Index",
+    "länsförsäkringar global index": "Länsförsäkringar Global Index",
+    "länsförsäkringar usa index": "Länsförsäkringar USA Index",
+    "länsförsäkringar europa index": "Länsförsäkringar Europa Index",
+    "länsförsäkringar sverige index": "Länsförsäkringar Sverige Index"
 }
 
 # -----------------------------
@@ -137,16 +141,29 @@ def calculate_exposure(fund_name: str, company: str, ownership_pct: float) -> st
     if matches.empty:
         return f"No holdings matching '{company}' in fund '{fund_name}'."
 
+    # Get the report date
+    report_date = matches['Report Date'].iloc[0] if not matches.empty else None
+    if report_date:
+        try:
+            report_date = pd.to_datetime(report_date).strftime('%Y-%m-%d')
+        except:
+            pass
+
     exposure = 0.0
     for _, row in matches.iterrows():
         pct = row.get("% of Fund AUM", 0)
         exposure += (ownership_pct / 100.0) * pct
 
-    return f"Your estimated exposure to '{company}' through {fund_name} at {ownership_pct}% ownership is {exposure:.4f}% of the fund's assets."
+    summary = f"Your estimated exposure to '{company}' through {fund_name} at {ownership_pct}% ownership is {exposure:.4f}% of the fund's assets."
+    if report_date:
+        summary += f"\n*Report Date: {report_date}*"
+    return summary
 
 def calculate_total_exposure(company: str, fund_weights: dict) -> str:
     total_exposure = 0.0
     rows = []
+    report_dates = set()
+    
     for short_name, pct in fund_weights.items():
         fund_name = find_closest_fund(short_name)
         df = FUND_DF[FUND_DF["fund_name"].str.lower() == fund_name.lower()]
@@ -157,13 +174,28 @@ def calculate_total_exposure(company: str, fund_weights: dict) -> str:
 
         total_exposure += user_exposure
         rows.append((fund_name, pct, fund_exposure, user_exposure))
+        
+        # Collect report dates
+        if not matches.empty and 'Report Date' in matches.columns:
+            report_dates.update(matches['Report Date'].dropna().unique())
+    
+    # Format report date if available
+    report_date = None
+    if report_dates:
+        try:
+            report_date = pd.to_datetime(list(report_dates)[0]).strftime('%Y-%m-%d')
+        except:
+            pass
 
     table = "| Fund | Allocation (%) | Exposure in Fund (%) | Total Exposure (%) |\n"
     table += "|------|-----------------|------------------------|---------------------|\n"
     for name, alloc, exp_fund, exp_total in rows:
         table += f"| {name} | {alloc:.2f} | {exp_fund:.4f} | {exp_total:.4f} |\n"
 
-    return f"\U0001F4CA Your total exposure to '{company}' is approximately {total_exposure:.4f}%\n\n{table}"
+    summary = f"\U0001F4CA Your total exposure to '{company}' is approximately {total_exposure:.4f}%\n\n{table}"
+    if report_date:
+        summary += f"\n*Report Date: {report_date}*"
+    return summary
 
 # -----------------------------
 # LangChain Tools
@@ -209,8 +241,31 @@ def fund_exposure_lookup(input: str = "") -> str:
 @tool
 def largest_position_across_funds(input: str = "") -> str:
     """Find the largest single position across all funds."""
-    row = FUND_DF.loc[FUND_DF["Market Value"].astype(float).idxmax()]
-    return f"Largest holding: {row['Instrument Name']} ({row['ISIN']}) worth {row['Market Value']} in {row['fund_name']}"
+    # Check if the input contains a fund name
+    fund_name = find_closest_fund(input)
+    if fund_name:
+        # If a fund is specified, only look in that fund
+        df = FUND_DF[FUND_DF["fund_name"].str.lower() == fund_name.lower()]
+    else:
+        # If no fund specified, look across all funds
+        df = FUND_DF
+    
+    if df.empty:
+        return f"No holdings found for fund '{input}'."
+    
+    row = df.loc[df["Market Value"].astype(float).idxmax()]
+    report_date = row['Report Date'] if 'Report Date' in row else None
+    if report_date:
+        try:
+            report_date = pd.to_datetime(report_date).strftime('%Y-%m-%d')
+        except:
+            pass
+    
+    fund_context = f" in {fund_name}" if fund_name else " across all funds"
+    summary = f"Largest holding{fund_context}: {row['Instrument Name']} ({row['ISIN']}) worth {row['Market Value']} in {row['fund_name']}"
+    if report_date:
+        summary += f"\n*Report Date: {report_date}*"
+    return summary
 
 @tool
 def top_holdings_for_fund(input: str = "") -> str:
@@ -219,55 +274,216 @@ def top_holdings_for_fund(input: str = "") -> str:
     df = find_holdings_for_fund(fund_name)
     if df.empty:
         return f"Fund '{input}' not found."
+    
+    # Get the report date
+    report_date = df['Report Date'].iloc[0] if not df.empty else None
+    
     top = df.sort_values("Market Value", ascending=False).head(10)
     table = "| Holding | % of Fund AUM |\n|---------|----------------|\n"
     for _, row in top.iterrows():
         table += f"| {row['Instrument Name']} | {row['% of Fund AUM']:.2f}% |\n"
-    return f"Top 10 holdings in {fund_name}:\n\n{table}"
+    
+    summary = f"Top 10 holdings in {fund_name}"
+    if report_date:
+        summary += f" (Report Date: {report_date})"
+    summary += ":\n\n" + table
+    return summary
 
 @tool
 def sector_exposure_lookup(input: str = "") -> str:
     """Find total exposure across all funds to a specific sector (English or Swedish name)."""
     sector_query = input.lower()
-    matches = FUND_DF[FUND_DF["Industry Name"].str.lower().str.contains(sector_query) |
-                      FUND_DF["Bransch_namn"].str.lower().str.contains(sector_query)]
+    
+    # Check if the input contains a fund name
+    fund_name = find_closest_fund(input)
+    if fund_name:
+        # If a fund is specified, only look in that fund
+        matches = FUND_DF[
+            (FUND_DF["fund_name"].str.lower() == fund_name.lower()) &
+            (FUND_DF["Industry Name"].str.lower().str.contains(sector_query) |
+             FUND_DF["Bransch_namn"].str.lower().str.contains(sector_query))
+        ]
+    else:
+        # If no fund specified, look across all funds
+        matches = FUND_DF[
+            FUND_DF["Industry Name"].str.lower().str.contains(sector_query) |
+            FUND_DF["Bransch_namn"].str.lower().str.contains(sector_query)
+        ]
+    
     if matches.empty:
         return f"No sector matching '{sector_query}' found."
+    
+    # Get the report date
+    report_date = matches['Report Date'].iloc[0] if not matches.empty else None
+    if report_date:
+        try:
+            report_date = pd.to_datetime(report_date).strftime('%Y-%m-%d')
+        except:
+            pass
+    
     total_value = matches["Market Value"].astype(float).sum()
     total_aum = matches["fund_aum"].astype(float).sum()
     pct = (total_value / total_aum * 100) if total_aum > 0 else 0
-    return f"Total reported exposure across all funds to sector '{sector_query}' is approximately {pct:.2f}% of fund assets."
+    
+    fund_context = f" in {fund_name}" if fund_name else " across all funds"
+    summary = f"Total reported exposure{fund_context} to sector '{sector_query}' is approximately {pct:.2f}% of fund assets."
+    if report_date:
+        summary += f"\n*Report Date: {report_date}*"
+    return summary
 
 @tool
 def funds_holding_company(input: str = "") -> str:
     """List all funds that hold a specific company."""
-    matches = FUND_DF[FUND_DF["Instrument Name"].str.contains(input, case=False, na=False)]
+    # Check if the input contains a fund name
+    fund_name = find_closest_fund(input)
+    if fund_name:
+        # If a fund is specified, only look in that fund
+        matches = FUND_DF[
+            (FUND_DF["fund_name"].str.lower() == fund_name.lower()) &
+            (FUND_DF["Instrument Name"].str.contains(input, case=False, na=False))
+        ]
+    else:
+        # If no fund specified, look across all funds
+        matches = FUND_DF[FUND_DF["Instrument Name"].str.contains(input, case=False, na=False)]
+    
     if matches.empty:
         return f"No funds found holding '{input}'."
-    return f"Funds holding '{input}':\n\n" + "\n".join(f"- {name}" for name in sorted(matches["fund_name"].unique().tolist()))
+    
+    # Get the report date
+    report_date = matches['Report Date'].iloc[0] if not matches.empty else None
+    if report_date:
+        try:
+            report_date = pd.to_datetime(report_date).strftime('%Y-%m-%d')
+        except:
+            pass
+    
+    fund_context = f" in {fund_name}" if fund_name else ""
+    summary = f"Funds holding '{input}'{fund_context}"
+    if report_date:
+        summary += f" (Report Date: {report_date})"
+    summary += ":\n\n" + "\n".join(f"- {name}" for name in sorted(matches["fund_name"].unique().tolist()))
+    return summary
 
 @tool
 def funds_not_holding_company(input: str = "") -> str:
     """List all funds that do NOT hold a specific company."""
-    all_funds = set(FUND_DF["fund_name"].unique())
-    holding_funds = set(FUND_DF[FUND_DF["Instrument Name"].str.contains(input, case=False, na=False)]["fund_name"].unique())
-    non_holding_funds = sorted(all_funds - holding_funds)
-    return f"Funds NOT holding '{input}':\n\n" + "\n".join(f"- {name}" for name in non_holding_funds)
+    # Check if the input contains a fund name
+    fund_name = find_closest_fund(input)
+    if fund_name:
+        # If a fund is specified, only look in that fund
+        holding_funds = set(FUND_DF[
+            (FUND_DF["fund_name"].str.lower() == fund_name.lower()) &
+            (FUND_DF["Instrument Name"].str.contains(input, case=False, na=False))
+        ]["fund_name"].unique())
+        non_holding_funds = [fund_name] if fund_name not in holding_funds else []
+    else:
+        # If no fund specified, look across all funds
+        all_funds = set(FUND_DF["fund_name"].unique())
+        holding_funds = set(FUND_DF[FUND_DF["Instrument Name"].str.contains(input, case=False, na=False)]["fund_name"].unique())
+        non_holding_funds = sorted(all_funds - holding_funds)
+    
+    # Get the report date
+    report_date = FUND_DF['Report Date'].iloc[0] if not FUND_DF.empty else None
+    if report_date:
+        try:
+            report_date = pd.to_datetime(report_date).strftime('%Y-%m-%d')
+        except:
+            pass
+    
+    fund_context = f" in {fund_name}" if fund_name else ""
+    summary = f"Funds NOT holding '{input}'{fund_context}"
+    if report_date:
+        summary += f" (Report Date: {report_date})"
+    summary += ":\n\n" + "\n".join(f"- {name}" for name in non_holding_funds)
+    return summary
 
 @tool
 def fund_holdings_table(input: str = "") -> str:
-    """List full holdings of a fund as a markdown table."""
+    """List top 20 holdings of a fund as a markdown table."""
     fund_name = find_closest_fund(input)
     df = find_holdings_for_fund(fund_name)
     if df.empty:
         return f"No holdings found for fund '{input}'."
-    return f"### Full Holdings for {fund_name}:\n\n" + df.to_markdown(index=False)
+    
+    # Get the report date and format it as YYYY-MM-DD
+    report_date = df['Report Date'].iloc[0] if not df.empty else None
+    if report_date:
+        try:
+            report_date = pd.to_datetime(report_date).strftime('%Y-%m-%d')
+        except:
+            pass
+    
+    # Sort by market value and get total counts
+    df = df.sort_values("Market Value", ascending=False)
+    total_holdings = len(df)
+    total_value = df['Market Value'].astype(float).sum()
+    
+    # Only show top 20 holdings
+    df_top = df.head(20)
+    top_20_value = df_top['Market Value'].astype(float).sum()
+    top_20_percentage = (top_20_value / total_value) * 100
+    
+    # Rename Bransch_namn to Sector
+    if 'Bransch_namn' in df_top.columns:
+        df_top = df_top.rename(columns={'Bransch_namn': 'Sector'})
+    
+    # Select and reorder columns
+    columns = [
+        'Instrument Name', 'ISIN', 'Country Code', 'Market Value', 
+        '% of Fund AUM', 'Sector', 'Currency'
+    ]
+    
+    # Filter to only existing columns
+    available_columns = [col for col in columns if col in df_top.columns]
+    df_display = df_top[available_columns]
+    
+    # Format the DataFrame
+    if 'Market Value' in df_display.columns:
+        df_display['Market Value'] = df_display['Market Value'].apply(lambda x: f"{int(float(x)):,}")
+    if '% of Fund AUM' in df_display.columns:
+        df_display['% of Fund AUM'] = df_display['% of Fund AUM'].apply(lambda x: f"{float(x):.2f}%")
+    
+    # Create markdown table with right-aligned numeric columns
+    table = "| " + " | ".join(available_columns) + " |\n"
+    table += "|" + "|".join(["-" * len(col) for col in available_columns]) + "|\n"
+    
+    for _, row in df_display.iterrows():
+        values = []
+        for col in available_columns:
+            value = row[col]
+            if col in ['Market Value', '% of Fund AUM']:
+                values.append(f"{value:>12}")  # Right-align numeric columns
+            else:
+                values.append(str(value))
+        table += "| " + " | ".join(values) + " |\n"
+    
+    summary = f"Here are the top 20 holdings for {fund_name}:\n\n"
+    if report_date:
+        summary += f"*Report Date: {report_date}*\n\n"
+    summary += table
+    
+    # Add summary section
+    summary += "\n### Summary:\n"
+    if total_holdings > 20:
+        summary += f"- Showing top 20 holdings out of {total_holdings} total holdings."
+    summary += f"- Market value of top 20 holdings: {int(top_20_value):,}\n"
+    summary += f"- Total fund market value: {int(total_value):,}\n"
+    summary += f"- Top 20 holdings represent: {top_20_percentage:.1f}% of total fund value\n"
+    
+
+    
+    return summary
 
 @tool
 def list_all_funds(_: str = "") -> str:
     """List all available funds along with metadata such as ISIN, AUM, fees, benchmark, and risk."""
-    columns = ["fund_name", "fund_company", "fund_isin", "fund_aum", "cash", "other_assets_liabilities", "active_risk", "stddev_24m", "benchmark"]
+    columns = ["fund_name", "fund_company", "fund_isin", "fund_aum", "cash", "other_assets_liabilities", "active_risk", "stddev_24m", "benchmark", "Report Date"]
     df = FUND_DF[columns].drop_duplicates().sort_values("fund_name")
+    
+    # Format the report date
+    if 'Report Date' in df.columns:
+        df['Report Date'] = df['Report Date'].apply(lambda x: str(x) if pd.notnull(x) else 'N/A')
+    
     return "### All Registered Funds with Metadata:\n\n" + df.to_markdown(index=False)
 
 @tool
@@ -298,7 +514,7 @@ tools = [
     stop_looping
 ]
 
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0, max_tokens=4000)
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
 prompt = PromptTemplate.from_template("""
@@ -344,8 +560,9 @@ agent_executor = AgentExecutor.from_agent_and_tools(
     tools=tools,
     memory=memory,
     verbose=True,
-    max_iterations=15,
+    max_iterations=3,
     max_execution_time=180,
+    early_stopping_method="generate",
     handle_parsing_errors=True  # 👈 this is key
 )
 
