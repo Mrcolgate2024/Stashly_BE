@@ -4,10 +4,12 @@ A conversational AI assistant that provides financial analysis, portfolio manage
 
 ## Recent Updates
 
+- 🔄 Complete refactoring of research agent structure for better modularity
 - 📊 Improved chart generation using real market data from market_data.xlsx
 - 🔍 Enhanced portfolio analysis with support for common portfolio aliases (70/30, 60/40, etc.)
 - 🚀 Better error handling and response formatting
 - ⏱️ Optimized agent performance with proper timeout handling
+- 👤 Added personalized agent personas in Knowledge_base
 
 ## Installation
 
@@ -35,12 +37,45 @@ Make sure Docker Desktop is running, then build and start the container:
 - **Interactive Avatar**: Integration with Simli API for a personalized avatar experience
 - **Market Analysis**: Provides detailed market insights and financial data analysis
 - **Streaming Responses**: Real-time streaming chat responses for better user experience
+- **Research Agent System**: Modular research system with specialized agents:
+  - Analysis Agent: Market and financial data analysis
+  - Editor Agent: Content refinement and formatting
+  - Expert Agent: Domain-specific expertise
+  - Research Supervisor: Coordination and task management
+- **Fund Analysis System**:
+  - Fund Loader: Parses and processes fund XML data from Swedish financial institutions
+  - Fund Position Agent: Analyzes fund holdings, exposures, and sector allocations
+  - Support for common fund aliases (e.g., "LF Global", "LF USA")
+  - Exposure calculation across multiple funds
+  - Sector and industry analysis
+- **Stock Price Analysis**:
+  - Real-time stock data using Yahoo Finance
+  - Support for common company aliases (e.g., "Apple", "Tesla", "Google")
+  - Current price and market data
+  - Fundamental analysis (PE ratio, EPS, revenue, etc.)
+  - Dividend history
+  - Historical price data and charts
+- **Web Research System**:
+  - Web search for recent market news and events
+  - Wikipedia integration for background information
+  - Smart date range handling for time-sensitive queries
+  - Fallback mechanisms for comprehensive coverage
+  - Context-aware search results
+- **Conversational Agent**:
+  - Personalized responses using Ashley's persona
+  - Context-aware conversations with memory
+  - Handles greetings, introductions, and personal questions
+  - Maintains conversation history and user context
 - **Multiple Endpoints**:
   - Streaming chat completions (OpenAI compatible)
   - Regular chat interface
   - Avatar connection and management
   - Market data analysis
   - Conversation history management
+  - Research agent interactions
+  - Fund analysis and exposure calculations
+  - Stock price queries
+  - Web research results
 
 ## Prerequisites
 
@@ -103,6 +138,10 @@ For detailed deployment instructions, see [AZURE_DEPLOYMENT.md](AZURE_DEPLOYMENT
 - `OPENAI_API_KEY`: Required for AI functionality
 - `TAVILY_API_KEY`: For additional research capabilities
 - `GOOGLE_API_KEY`: For extended functionality
+- `SIMLI_API_KEY`: For avatar integration
+- `SIMLI_API_SECRET`: For avatar integration
+- `OPENFIGI_API_KEY`: For fund and security information lookup
+- `MARKET_DATA_PATH`: Path to market data files (default: /app/Market_data)
 
 Note: Simli API credentials are managed by the frontend application.
 
@@ -121,6 +160,83 @@ The application includes comprehensive error handling for:
 - Timeout scenarios
 
 ## API Usage
+
+### Stock Price Analysis
+`POST /chat`
+
+Request:
+```json
+{
+  "message": "What is Apple's current stock price and PE ratio?",
+  "thread_id": "default"
+}
+```
+
+Response:
+```json
+{
+  "response": "The current price of Apple Inc. (AAPL) is $175.50 USD.\n\nKey fundamentals:\nMarket Cap: 2.8T\nPE Ratio: 28.5\nEPS: 6.15\nRevenue: 383.3B\nProfit Margin: 25.3%\nReturn on Equity: 147.2%",
+  "thread_id": "default",
+  "stock_output": {
+    "price": 175.50,
+    "currency": "USD",
+    "fundamentals": {
+      "market_cap": "2.8T",
+      "pe_ratio": 28.5,
+      "eps": 6.15,
+      "revenue": "383.3B",
+      "profit_margin": "25.3%",
+      "roe": "147.2%"
+    }
+  }
+}
+```
+
+### Web Research
+`POST /chat`
+
+Request:
+```json
+{
+  "message": "What are the latest developments in AI regulation?",
+  "thread_id": "default"
+}
+```
+
+Response:
+```json
+{
+  "response": "Recent developments in AI regulation include...",
+  "thread_id": "default",
+  "websearch_output": {
+    "content": "Detailed research results...",
+    "sources": ["source1", "source2"],
+    "timestamp": "2024-03-21T10:00:00Z"
+  }
+}
+```
+
+### Fund Analysis Endpoints
+`POST /chat`
+
+Request:
+```json
+{
+  "message": "What is my exposure to Tesla across my funds? I have 25% in LF Global and 25% in LF USA",
+  "thread_id": "default"
+}
+```
+
+Response:
+```json
+{
+  "response": "Your total exposure to 'Tesla' is approximately 0.1234%...",
+  "thread_id": "default",
+  "fund_output": {
+    "exposure_table": "| Fund | Allocation (%) | Exposure in Fund (%) | Total Exposure (%) |\n|------|-----------------|------------------------|---------------------|\n| LF Global | 25.00 | 0.1234 | 0.0309 |\n| LF USA | 25.00 | 0.3700 | 0.0925 |"
+  }
+}
+```
 
 ### Chat Endpoint
 `POST /chat`
