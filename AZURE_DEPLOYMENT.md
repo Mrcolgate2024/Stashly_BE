@@ -6,6 +6,13 @@
 - Azure CLI installed (https://aka.ms/installazurecli)
 - WSL 2 enabled (if using Windows)
 
+## Project Structure
+The application is organized into several key directories:
+- `Agents/`: Contains all AI agents including the refactored research agent system
+- `Knowledge_base/`: Stores agent personas and configuration files
+- `Market_data/`: Contains market data files and analysis tools
+- Root level: Main application files and configuration
+
 ## Initial Setup
 
 1. **Verify Installations**
@@ -76,6 +83,9 @@ In Azure Portal:
   - `OPENAI_API_KEY`: Your OpenAI API key
   - `TAVILY_API_KEY`: Your Tavily API key
   - `GOOGLE_API_KEY`: Your Google API key
+  - `SIMLI_API_KEY`: Your Simli API key
+  - `SIMLI_API_SECRET`: Your Simli API secret
+  - `MARKET_DATA_PATH`: Path to market data files (default: /app/Market_data)
 
 ## Testing and Debugging
 
@@ -118,4 +128,6 @@ az webapp restart --name stashlybackendapp --resource-group Stashly
 - Check App Service logs for any issues
 - Verify environment variables are set correctly
 - Ensure Docker container is running with `docker ps`
-- Check Azure Portal for deployment status and logs 
+- Check Azure Portal for deployment status and logs
+- Verify market data files are properly mounted in the container
+- Check research agent logs for any initialization issues 
