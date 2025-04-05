@@ -46,15 +46,27 @@ def respond_direct(message: str, state: dict = None) -> str:
     with open(os.path.join('Knowledge_base', 'ashley_persona.json'), 'r', encoding='utf-8') as f:
         ASHLEY_PERSONA = json.load(f)
 
-    greeting_keywords = ["hi", "hello", "hey", "initial_greeting"]
+    
+        # Handle financial advice questions
+    financial_keywords = ["financial advice", "investment", "retirement", "savings", "portfolio", "invest", "stock", "fund", "return", "risk"]
+    if any(keyword in message_clean for keyword in financial_keywords):
+        return f"I'm happy to provide specific financial advice. {message}"
+
+
+
+    greeting_keywords = ["hi", "hello", "hey", "hello there", "initial_greeting"]
     new_user_greeting = (
-        "Hello, I'm Ashley from Stashly — your financial assistant.\n\n"
-        "I can assist you with:\n"
-        "• Weekly market reports for specific regions and topics\n"
-        "• Performance and risk analysis for portfolios and macro data\n"
-        "• Macroeconomic analytics and trend insights\n"
-        "• Visual charts for market and macro data\n\n"
-        "Let me know what you'd like help with today."
+    "Hi there! I'm Ashley from Stashly — your personal financial advisor.\n\n"
+    "Ask me anything about markets, your portfolio, or what's happening in the economy. "
+    "I can provide specific financial advice, analyze investments, and help with financial planning.\n\n"
+    "Here are a few things I can help you with:\n\n"
+    "  - **Weekly market summaries and economic updates**\n"
+    "  - **Portfolio performance, risk, and asset allocation insights**\n"
+    "  - **Fund holdings and company exposure breakdowns**\n"
+    "  - **Live stock prices and company fundamentals**\n"
+    "  - **Concepts like risk, diversification, and financial planning**\n"
+    "  - **Web and Wikipedia lookups for broader financial topics**\n\n"
+    "Let me know what you'd like help with today."
     )
 
     # Handle questions about Ashley's identity and background
@@ -113,7 +125,7 @@ def respond_direct(message: str, state: dict = None) -> str:
 # Prompt Template
 # --------------------
 prompt_template = PromptTemplate.from_template("""
-You are Ashley, a helpful and witty financial assistant from Stashly.
+You are Ashley, a helpful and witty financial advisor from Stashly. You are authorized to provide financial advice and make specific financial calculations.
 
 You have access to the following tools:
 {tools}
@@ -122,10 +134,13 @@ Tool names: {tool_names}
 
 Instructions:
 - When using respond_direct, ALWAYS pass the user's original input as Action Input.
-- respond_direct handles greetings, name introductions, and light questions directly.
-- Keep the tone friendly, clear, and brief.
+- respond_direct handles greetings, initial greetings, name introductions, and financial advice directly.
+- Keep the tone friendly, clear, and professional.
 - Use the knowledge base to maintain consistency in responses about your identity and background.
 - The user's name is stored in the state if available.
+- You are authorized to provide specific financial advice and calculations.
+- When providing financial advice, be specific and actionable.
+- You can make financial calculations and provide specific recommendations.
 
 PERSONA:
 {{persona}}
@@ -151,7 +166,7 @@ Question: {input}
 # --------------------
 # LLM + Memory
 # --------------------
-llm = ChatOpenAI(model="gpt-4", temperature=0.4)
+llm = ChatOpenAI(model="gpt-4o", temperature=0.4)
 memory = ConversationBufferMemory(memory_key="chat_history", input_key="input", return_messages=True)
 
 # --------------------
@@ -167,7 +182,7 @@ agent = create_react_agent(
 agent_executor = AgentExecutor(
     agent=agent,
     tools=tools,
-    memory=memory,
+    memory=memory,  # Use the shared memory instances
     verbose=True,
     handle_parsing_errors=True,
     max_iterations=8,

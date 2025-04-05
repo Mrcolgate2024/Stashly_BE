@@ -15,7 +15,6 @@ dist/
 *.so
 *.egg
 *.egg-info/
-test*.py
 
 # Logs
 *.log
@@ -38,7 +37,6 @@ Thumbs.db
 # Temporary files
 temp/
 tmp/
-supervisor_backup.py
 
 # Explicitly include knowledge base
 !knowledge_base/

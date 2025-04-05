@@ -3,6 +3,7 @@ from langgraph.graph import StateGraph
 from datetime import datetime
 import traceback
 import json
+import re
 
 # Agent handlers
 from Agents.portfolio_agent import run_portfolio_agent
@@ -38,13 +39,36 @@ def route_decision(state: GraphState) -> str:
     message = state["input"].lower()
     print(f"Routing message: {message}")
 
+    # # Check if this is a follow-up question
+    # follow_up_keywords = [
+    #     ""
+
+    # ]
+    
+    # # Get the last message from the conversation
+    # last_message = state.get("messages", [{}])[-1].get("content", "").lower()
+    
+    # # Check if this is a follow-up by looking at both the current message and context
+    # is_follow_up = (
+    #     any(keyword in message for keyword in follow_up_keywords) or
+    #     (message in ["when is this for?", "what was the price again?"]) or
+    #     (last_message and any(word in last_message for word in ["price", "stock", "market", "fund", "portfolio"]))
+    # )
+    
+    # last_agent = state.get("last_ran_agent")
+
+    # # If this is a follow-up question and we have a last agent, use that agent
+    # if is_follow_up and last_agent:
+    #     print(f"Routing to {last_agent} agent (follow-up question)")
+    #     return last_agent
+
     # Keyword categories
     market_keywords = ["market", "report", "weekly", "analysis", "economy", "trends", "economic"]
     portfolio_keywords = ["portfolio", "70/30", "60/40", "50/50", "return", "performance", "time series", "index", "ppm", "chart", "visualize", "graph"]
-    fund_keywords = ["exposure", "owns", "holding", "fund owns", "who holds", "do i have exposure", "fund position", "fund", "allocation", "holdings", "funds"]
+    fund_keywords = ["exposure", "owns", "fund risk", "risk level", "fund volatility", "holding", "fund owns", "who holds", "do i have exposure", "fund position", "fund", "allocation", "holdings", "funds", "isin", "sector", "industry", "risk", "volatility", "standard deviation", "tracking error", "active risk", "risk profile", "risk assessment", "risk analysis", "risk metrics"]
     stock_keywords = ["stock", "price", "fundamentals", "ticker", "dividend", "pe ratio", "eps", "valuation", "quote", "history"]
-    websearch_keywords = ["search", "look up", "find", "web", "online", "google", "weather", "news"]
-    greeting_keywords = ["hello", "hi", "hey", "bjorn", "name is", "greetings", "initial_greeting"]
+    websearch_keywords = ["search", "look up", "find", "web", "online", "google", "weather", "news", "retirement", "financial advice", "investment", "portfolio", "invest", "stock", "fund", "return", "risk", "savings", "spending"]
+    greeting_keywords = ["hello", "hello there", "hi there", "hi", "hey", "bjorn", "name is", "greetings", "initial_greeting"]
     portfolio_names = ["70/30", "60/40", "50/50"]
     ashley_keywords = ["who are you", "tell me about yourself", "what's your background", "where are you from", "how old are you", "what do you do", "what's your story", "ashley", "your background", "your education", "your family", "how are you", "how do you feel", "are you ok", "are you well", "what are you wearing", "your clothes", "your outfit", "your appearance"]
 
@@ -166,6 +190,7 @@ async def process_user_input(message: str, thread_id: str = "default") -> Dict[s
 
         print("LangGraph result:", json.dumps(result, indent=2))
 
+        # Handle the response text
         if result.get("market_report_output"):
             text = result["market_report_output"]
             last_agent = "market"
@@ -179,7 +204,22 @@ async def process_user_input(message: str, thread_id: str = "default") -> Dict[s
             text = result["fund_output"]
             last_agent = "fund"
         elif result.get("conversational_output"):
+            # For conversational output, ensure we get the full message
             text = result["conversational_output"]
+            if message == "initial_greeting":
+                text = (
+                    "Hi there! I'm Ashley from Stashly — your personal financial advisor.\n\n"
+                    "Ask me anything about markets, your portfolio, or what's happening in the economy. "
+                    "I can provide specific financial advice, analyze investments, and help with financial planning.\n\n"
+                    "Here are a few things I can help you with:\n\n"
+                    "  - **Weekly market summaries and economic updates**\n"
+                    "  - **Portfolio performance, risk, and asset allocation insights**\n"
+                    "  - **Fund holdings and company exposure breakdowns**\n"
+                    "  - **Live stock prices and company fundamentals**\n"
+                    "  - **Concepts like risk, diversification, and financial planning**\n"
+                    "  - **Web and Wikipedia lookups for broader financial topics**\n\n"
+                    "Let me know what you'd like help with today."
+                )
             last_agent = "chat"
         elif result.get("websearch_output"):
             text = result["websearch_output"]

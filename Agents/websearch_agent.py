@@ -141,9 +141,9 @@ Final Answer: your complete response to the user.
 Here are a few examples:
 
 Example 1:
-Thought: To answer the user's question, I should search the web for recent and accurate information.
+Thought: The user is asking about retirement planning. I should search for general guidelines while including appropriate disclaimers.
 Action: search_web_tool
-Action Input: recent trends in renewable energy
+Action Input: expert guidelines retirement savings calculation methodology
 
 Example 2:
 Thought: I need a reliable summary, so I’ll check Wikipedia.

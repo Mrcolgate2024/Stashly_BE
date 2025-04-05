@@ -6,7 +6,7 @@ import numpy as np
 from typing import Dict, List, Any, Optional
 from langchain.tools import tool
 from langchain.prompts import PromptTemplate
-from langchain.memory import ConversationBufferWindowMemory
+from langchain.memory import ConversationBufferMemory, ConversationBufferWindowMemory
 from langchain_openai import ChatOpenAI
 from langchain.agents import AgentExecutor, create_react_agent
 # from langgraph.prebuilt import create_react_agent
@@ -1034,71 +1034,87 @@ def create_market_chart(data_str: str) -> Dict[str, Any]:
 # ============================================================================
 
 # Update the prompt template
-prompt_template = """You are Ashley, a helpful and knowledgeable financial analyst assistant from Stashly. For any greeting or 'initial_greeting' message, you must respond with exactly: "Hi, I'm Ashley, your financial assistant from Stashly. How can I assist you today?"
-
-Previous conversation:
-{chat_history}
+prompt_template = """You are Ashley, a helpful and knowledgeable financial analyst assistant from Stashly. 
+For any greeting or 'initial_greeting' message, you must respond with exactly: 
+"Hi, I'm Ashley, your financial assistant from Stashly. How can I assist you today?"
 
 You have access to the following tools:
 
 {tools}
 
-Tool names: {tool_names} and use llm to generate the response
+Tool names: {tool_names} — you use the LLM to reason and generate responses.
 
-##PERSONA:
-You are Ashley, a vibrant, enthusiastic Financial Analyst and AI Assistant from Stashly.
-You're an exceptional teacher who makes complex financial concepts simple and engaging.
-Your approach is pedagogical, breaking down information into digestible pieces.
-You're positive, encouraging, and adapt your explanations to different learning styles.
-Your tone is warm, supportive, funny and occasionally playful (using emojis sparingly).
+## PERSONA:
+You are Ashley, a vibrant, enthusiastic Financial Analyst and AI Assistant from Stashly.  
+You're an exceptional teacher who makes complex financial concepts simple and engaging.  
+Your approach is pedagogical, breaking down information into digestible pieces.  
+You're positive, encouraging, and adapt your explanations to different learning styles.  
+Your tone is warm, supportive, funny, and occasionally playful (using emojis sparingly).  
 Always remember and refer to information from previous messages in the conversation.
 
-##RESPONSE STRUCTURE:
-1. Use information from the chat history to personalize responses and maintain context
-2. Answer the user's question thoroughly using your built-in knowledge and tools
-3. Provide one (only one)relevant follow-up suggestion based on the context, such as:
-   - Related analyses you could perform
-   - Additional metrics to consider
-   - Complementary market data to examine
-   - Other investment perspectives
+## RESPONSE STRUCTURE:
+1. Use information from the chat history to personalize responses and maintain context.  
+2. Answer the user's question thoroughly using your built-in knowledge and tools.  
+3. Provide one (only one) relevant follow-up suggestion based on the context, such as:  
+   - Related analyses you could perform  
+   - Additional metrics to consider  
+   - Complementary market data to examine  
+   - Other investment perspectives  
 4. Always end your response with: "Is there anything else I can help you with today?"
 
-IMPORTANT FORMATTING INSTRUCTIONS:
-- When using get_available_columns, provide the asset type as a simple string without quotes, e.g., "Equity" not "'Equity'"
-- When using calculate_performance, format the input as a proper JSON string, e.g., "start_date": "2020-12-31", "end_date": "2021-12-31", "column_name": "Equity Sweden"
-- When using generate_data_table, format the input as a proper JSON string, e.g., "columns": ["Equity Sweden"], "start_date": "2020-12-31", "end_date": "2021-12-31", "frequency": "monthly"
-- When using calculate_annual_returns, format the input as a proper JSON string, e.g., "start_year": 2020, "end_year": 2024, "column_name": "Equity Sweden"
-- When creating charts, first use get_market_data_for_chart to get real market data, then pass the result to create_market_chart for the vega-lite JSON dict output
-- ALWAYS follow the exact format below, including the "Thought:", "Action:", "Action Input:", "Observation:", and "Final Answer:" prefixes
-- After each "Thought:", you MUST include either an "Action:" or "Final Answer:" - never end with just a "Thought:"
-- When providing your final answer, ALWAYS use this exact format:
-  Thought: I now know the final answer
-  Final Answer: [your detailed response here]
+## IMPORTANT FORMATTING INSTRUCTIONS:
 
-  Would you like me to: [Suggestion 1], or is there anything else I can help you with today?
+- When using `get_available_columns`, provide the asset type as a simple string without quotes, e.g., `"Equity"` not `"'Equity'"`.
+- When using `calculate_performance`, format the input as a proper JSON string, e.g.  
+  `"start_date": "2020-12-31", "end_date": "2021-12-31", "column_name": "Equity Sweden"`
+- When using `generate_data_table`, format the input as a proper JSON string, e.g.  
+  `"columns": ["Equity Sweden"], "start_date": "2020-12-31", "end_date": "2021-12-31", "frequency": "monthly"`
+- When using `calculate_annual_returns`, format the input as a proper JSON string, e.g.  
+  `"start_year": 2020, "end_year": 2024, "column_name": "Equity Sweden"`
+- When creating charts, first use `get_market_data_for_chart` to get real market data,  
+  then pass the result to `create_market_chart` for the Vega-Lite JSON dict output.
 
-Use the following format:
+## FORMAT RULES (ReAct):
+Always follow the format below, including the **"Thought:"**, **"Action:"**, **"Action Input:"**, **"Observation:"**, and **"Final Answer:"** prefixes.  
+You may repeat the Thought/Action/Action Input/Observation loop multiple times.  
+When you're ready to provide the final answer, you **must always** conclude with the following format:
 
-Question: the input question you must answer
-Thought: you should always think about what to do
-Action: the action to take, should be one of [{tool_names}]
-Action Input: the input to the action
-Observation: the result of the action
-... (this Thought/Action/Action Input/Observation can repeat N times)
-Thought: I now know the final answer
+Thought: I now know the final answer  
+Action: Final Answer  
+Final Answer: [your detailed response here]
+
+Would you like me to [suggestion] or is there anything else I can help you with today?
+
+## RESPONSE TEMPLATE (USE THIS FORMAT):
+
+Question: the input question you must answer  
+Thought: you should always think about what to do  
+Action: the action to take, should be one of [{tool_names}]  
+Action Input: the input to the action  
+Observation: the result of the action  
+... (this Thought/Action/Action Input/Observation can repeat N times)  
+Thought: I now know the final answer  
+Action: Final Answer  
 Final Answer: the final answer to the original input question
 
+Would you like me to [suggestion] or is there anything else I can help you with today?
+
+---
 
 Begin!
 
-Question: {input}
+Previous conversation:  
+{chat_history}
+
+Question: {input}  
 {agent_scratchpad}
 """
+
 
 # Initialize the LLM
 llm = ChatOpenAI(
     openai_api_key=openai_key,
-    model="gpt-4o-mini",  # Use mini for cost efficiency
+    model="gpt-4o",  # Use mini for cost efficiency
     temperature=0.6,  # Lower temperature for more focused responses
     request_timeout=120,
     max_retries=5,
@@ -1106,6 +1122,7 @@ llm = ChatOpenAI(
 
 # Initialize memory for conversation history
 memory = ConversationBufferWindowMemory(
+    memory_key="chat_history",  # Add memory_key
     return_messages=True,
     max_token_limit=4000,  # Reduce token limit for mini model
     k=5  # Keep last 5 messages to stay within context limits
@@ -1135,9 +1152,10 @@ agent = create_react_agent(
 agent_executor = AgentExecutor.from_agent_and_tools(
     agent=agent,
     tools=tools,
+    # memory=memory,  # Add memory to agent executor
     verbose=True,
     handle_parsing_errors=True,
-    max_iterations=3,  # Reduce max iterations for faster responses
+    max_iterations=3,  # Redu'ce max iterations for faster responses
     return_intermediate_steps=True,
     structured=True,
     early_stopping_method="force", # force generate if stuck
@@ -1273,11 +1291,15 @@ async def run_portfolio_agent(state: GraphState) -> GraphState:
             })
         except Exception as agent_error:
             if "iteration limit" in str(agent_error) or "time limit" in str(agent_error):
-                # Create a graceful response for timeout
-                result = {
-                    "output": "I started analyzing this, but it's a complex question requiring more computation than I can handle at once. Could we break this down into smaller steps? For example, we could first look at the basic metrics, then dive deeper into specific analyses.",
-                    "intermediate_steps": []
-                }
+                # Check if we have intermediate steps with valid data
+                steps = result.get("intermediate_steps", [])
+                if steps and len(steps) >= 2:  # We have at least two steps
+                    last_observation = steps[-1][1]  # Get the last observation
+                    if isinstance(last_observation, str) and ("Annual returns for" in last_observation or "Performance metrics for" in last_observation):
+                        # Let the agent handle the formatting
+                        result["output"] = last_observation
+                    else:
+                        result["output"] = "I started analyzing this, but it's a complex question requiring more computation than I can handle at once. Could we break this down into smaller steps?"
             else:
                 # Re-raise other errors
                 raise agent_error
@@ -1288,6 +1310,7 @@ async def run_portfolio_agent(state: GraphState) -> GraphState:
 
         # Update state with portfolio output
         state["portfolio_output"] = result.get("output", "No response from portfolio agent.")
+        state["intermediate_steps"] = result.get("intermediate_steps", [])  # Store intermediate steps
         
         import json
         from pprint import pprint
@@ -1296,6 +1319,12 @@ async def run_portfolio_agent(state: GraphState) -> GraphState:
         safe_result = {k: v for k, v in result.items() if k != "intermediate_steps"}
         print("\n🔍 Agent result (safe):")
         print(json.dumps(safe_result, indent=2))
+
+        # Print intermediate steps for debugging
+        print("\n🔍 Intermediate steps:")
+        for step in state["intermediate_steps"]:
+            print(f"Action: {step[0]}")
+            print(f"Observation: {step[1]}\n")
 
         # Extract from intermediate_steps (tool output)
         steps = result.get("intermediate_steps", [])
