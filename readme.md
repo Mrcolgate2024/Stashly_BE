@@ -10,6 +10,7 @@ A conversational AI assistant that provides financial analysis, portfolio manage
 - 🚀 Better error handling and response formatting
 - ⏱️ Optimized agent performance with proper timeout handling
 - 👤 Added personalized agent personas in Knowledge_base
+- 🤖 New AI-powered research system with analyst interviews
 
 ## Installation
 
@@ -37,11 +38,11 @@ Make sure Docker Desktop is running, then build and start the container:
 - **Interactive Avatar**: Integration with Simli API for a personalized avatar experience
 - **Market Analysis**: Provides detailed market insights and financial data analysis
 - **Streaming Responses**: Real-time streaming chat responses for better user experience
-- **Research Agent System**: Modular research system with specialized agents:
-  - Analysis Agent: Market and financial data analysis
-  - Editor Agent: Content refinement and formatting
-  - Expert Agent: Domain-specific expertise
-  - Research Supervisor: Coordination and task management
+- **Research Agent System**: AI-powered research with analyst interviews:
+  - Creates specialized AI analysts for different perspectives
+  - Conducts interviews with experts
+  - Generates comprehensive reports
+  - Automatically approves and finalizes research
 - **Fund Analysis System**:
   - Fund Loader: Parses and processes fund XML data from Swedish financial institutions
   - Fund Position Agent: Analyzes fund holdings, exposures, and sector allocations
@@ -160,6 +161,30 @@ The application includes comprehensive error handling for:
 - Timeout scenarios
 
 ## API Usage
+
+### Research Analysis
+`POST /chat`
+
+Request:
+```json
+{
+  "message": "Research the impact of AI on financial markets",
+  "thread_id": "default"
+}
+```
+
+Response:
+```json
+{
+  "response": "Research report on AI's impact on financial markets...",
+  "thread_id": "default",
+  "research_output": {
+    "content": "Comprehensive research report...",
+    "sources": ["source1", "source2"],
+    "analysts": ["analyst1", "analyst2"]
+  }
+}
+```
 
 ### Stock Price Analysis
 `POST /chat`

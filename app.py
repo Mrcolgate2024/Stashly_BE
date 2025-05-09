@@ -1,7 +1,8 @@
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, WebSocket, WebSocketDisconnect
 from fastapi.responses import StreamingResponse, JSONResponse
 from pydantic import BaseModel, Field
 from typing import List, Optional, Dict, Any, Union
+from Agents.research_assistant import run_research_agent
 import uvicorn
 from Agents.portfolio_agent import agent_executor, process_user_input, filter_messages
 from fastapi.middleware.cors import CORSMiddleware
@@ -13,10 +14,11 @@ import asyncio
 import httpx
 from langchain.agents import AgentExecutor, create_react_agent
 from supervisor_agent import process_user_input
-# Update imports to use new file names
-# from supervisor_agent import agent_supervisor, process_user_input
-# from portfolio_agent import PortfolioAgent, memory  # was ReactAgent
-# from market_report_agent import MarketReportAgent  # was MarketSummary
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -41,7 +43,28 @@ app.add_middleware(
 
 # Add this constant at the top with other imports
 MAX_CONVERSATION_TURNS = 5  # Adjust this number based on your needs
+class FeedbackRequest(BaseModel):
+    feedback: str
+    paused_state: Dict[str, Any]
+    thread_id: Optional[str] = "default"
 
+@app.post("/research/resume")
+async def resume_research(feedback_request: FeedbackRequest):
+    try:
+        result = await run_research_agent(
+            feedback_request.paused_state,
+            feedback_request.feedback
+        )
+
+        return {
+            "response": result.get("research_output") or result.get("final_report", "Research complete."),
+            "thread_id": feedback_request.thread_id,
+            "vega_lite_spec": None
+        }
+    except Exception as e:
+        print(f"Error resuming research: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+    
 class ChatMessage(BaseModel):
     role: str
     content: str

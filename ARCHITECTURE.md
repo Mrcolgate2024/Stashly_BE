@@ -33,16 +33,8 @@ graph TD
             SUP --> CONV[conversational<br>• get_persona<br>• respond_direct<br>• run_conversational_agent]:::agent
             SUP --> WEB[websearch<br>• search_web<br>• search_wikipedia<br>• search_web_tool<br>• search_wikipedia_tool]:::agent
             SUP --> STOCK[stock<br>• resolve_ticker<br>• query_stock_info<br>• run_stock_price_agent]:::agent
-            SUP --> RS[research<br>• break_down_topic<br>• write_report<br>• create_analysts]:::agent
+            SUP --> RS[research<br>• create_analysts<br>• conduct_interviews<br>• write_report<br>• finalize_report]:::agent
         end
-    end
-
-    %% Research System
-    subgraph Research["Research System"]
-        direction LR
-        RS --> AN[analysis<br>• break_down_topic<br>• run_analyst_agent]:::research
-        RS --> ED[editor<br>• write_report<br>• write_intro_or_conclusion<br>• finalize_report]:::research
-        RS --> EX[expert<br>• create_analysts]:::research
     end
 
     %% External APIs
@@ -105,9 +97,7 @@ graph TD
     CONV --> OPENAI
     WEB --> OPENAI
     STOCK --> OPENAI
-    AN --> OPENAI
-    ED --> OPENAI
-    EX --> OPENAI
+    RS --> OPENAI
 
     %% Langsmith Connections
     SUP --> LANG
@@ -122,7 +112,6 @@ graph TD
     classDef frontend fill:#e1f5fe,stroke:#01579b,stroke-width:2px
     classDef backend fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
     classDef agent fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
-    classDef research fill:#fff3e0,stroke:#e65100,stroke-width:2px
     classDef api fill:#fce4ec,stroke:#880e4f,stroke-width:2px
     classDef data fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
     classDef azure fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
@@ -149,14 +138,9 @@ graph TD
 - **websearch_agent.py**: Web research capabilities
 - **stock_price_agent.py**: Stock market data analysis
 - **fund_loader.py**: Fund data parsing and loading
+- **research_assistant.py**: Research and analysis with AI analysts
 
-### 4. Research System
-- **research_supervisor.py**: Coordinates research tasks
-- **analys_agent.py**: Topic analysis and breakdown
-- **editor_agent.py**: Content generation and editing
-- **expert_agent.py**: Domain expertise application
-
-### 5. External APIs
+### 4. External APIs
 - OpenAI API: Language model and AI capabilities (accessed by all agents)
 - Yahoo Finance: Stock market data
 - Wikipedia: Knowledge base
@@ -165,19 +149,19 @@ graph TD
 - Figi API: Sector search and classification data
 - Langsmith: Agent tracing and monitoring
 
-### 6. Knowledge Base
+### 5. Knowledge Base
 - Fund Data: Fund holdings and positions
 - Market Data: Historical market data
 - Ashley Persona: Conversational personality
 
-### 7. Infrastructure
+### 6. Infrastructure
 - **Azure Kubernetes Service (AKS)**: Container orchestration and management
 - **Azure Container Registry (ACR)**: Container image storage and management
 - **Azure Key Vault (KV)**: Secrets and configuration management
 - **Azure Monitor**: Application monitoring and logging
 - **Azure Network**: Network security and connectivity
 
-### 8. Version Control
+### 7. Version Control
 - **GitHub Repository**: Local source code management and storage
 
 ## Data Flow
@@ -191,7 +175,7 @@ graph TD
 7. Portfolio and fund agents access Figi API for sector data
 8. All agents are traced through Langsmith for monitoring
 9. Results are aggregated and returned to the user
-10. Research system can be called for in-depth analysis
+10. Research agent can be called for in-depth analysis with AI analysts
 11. All agents can access relevant external APIs and knowledge base
 12. Infrastructure components handle deployment, security, and scaling
 
@@ -206,8 +190,7 @@ graph TD
 - Natural language interaction
 - Web research capabilities
 - Stock market analysis
-- Research supervision system
-- Content generation and editing
+- AI-powered research with analyst interviews
 - Kubernetes-based container orchestration
 - Cloud-native infrastructure
 - Secure secrets management
